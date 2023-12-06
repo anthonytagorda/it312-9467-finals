@@ -47,7 +47,7 @@ body {
     text-align: center;
 }
 
-.info-box h1 {
+.info-box h2 {
     margin-bottom: 100px;
 }
 
@@ -65,7 +65,7 @@ body {
 .return-button a {
     text-decoration: none;
     color: #242423;
-    font-size: 2em;
+    font-size: 25px;
     font-weight: 700;
 }
 
