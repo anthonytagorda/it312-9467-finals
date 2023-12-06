@@ -4,10 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rentify Login</title>
+    <link rel="icon" href="../../../common/assets/images/r-icon.png" type="image/png">
     <link rel="stylesheet" href="../styles/globals.css">
     <link rel="stylesheet" href="../styles/user_login.css">
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="form-box login">
+            <img src="../../../common/assets/images/rentify-icon.png" alt="Rentify Logo" class="logo-img">
+            <h2>Hi there! Welcome back </h2>
+            <h4>Log in to Rentify with your School ID</h4>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+                    <label>School ID</label>
+                    <input type="number" required>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <label>Password</label>
+                    <input type="password" required>
+                </div>
+                <div class="forgot">
+                    <a href="contact_admin.html">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <div class="login-register">
+                    <p> Don't have an account?
+                        <a href="contact_admin.html" class="register-link">Register</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../scripts/login.js"></script>
+    <!--Ionics Icons [https://ionic.io/ionicons/usage]-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
