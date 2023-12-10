@@ -15,31 +15,60 @@ if (isset($_SESSION["user_id"])) {
 }
 
 ?>
+
+
+<span style="font-family: verdana, geneva, sans-serif;">
+    
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-</head>
-<body>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Dashboard</title>
+      <link rel="stylesheet" href="../styles/custodian_dashboard.css" />
+     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    </head>
+    <body>
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="#" class="logo">
+              <img src="/logo.jpg" alt="">
+              <span class="nav-item">DashBoard</span>
+            </a></li>
+            <li><a href="#">
+              <i class="fas fa-home"></i>
+              <span class="nav-item">Home</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-user"></i>
+              <span class="nav-item">Add Rooms</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-wallet"></i>
+              <span class="nav-item">Add Equipment</span>
+            </a></li>
+            <li><a href="">
+              <i class="fas fa-chart-bar"></i>
+              <span class="nav-item">Manage Rental</span>
+          </ul>
+        </nav>
+
+    <main class="content">
+        <div class="content-box">
+            <h1>Hello <?= htmlspecialchars($user["name"]) ?></h1>
+            <img src="image.jpg" alt="Image" class="image">
+            <p></p>
+        </div>
+    </main>
     
-    <h1>Home</h1>
-    
-    <?php if (isset($user)): ?>
-        
-        <p>Hello <?= htmlspecialchars($user["name"]) ?></p>
-        
-        <p><a href="logout.php">Log out</a></p>
-        
-    <?php else: ?>
-        
-        <p><a href="login.php">Log in</a> or <a href="../pages/register.html">sign up</a></p>
-        
-    <?php endif; ?>
-    
-</body>
-</html>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </body>
+    </html></span>
     
     
     
