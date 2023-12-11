@@ -44,7 +44,7 @@ if (isset($_SESSION["user_id"])) {
               <i class="fas fa-user"></i>
               <span class="nav-item">Add Rooms</span>
             </a></li>
-            <li><a href="">
+            <li><a href="equipment.php">
               <i class="fas fa-wallet"></i>
               <span class="nav-item">Add Equipment</span>
             </a></li>

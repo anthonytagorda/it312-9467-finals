@@ -1,15 +1,17 @@
+<!-- equipment.php -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="../styles/room.css" />
+  <title>Equipment Dashboard</title>
+  <link rel="stylesheet" href="../styles/equipment.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
 <body>
   <div class="container">
+    <!-- Navigation Bar -->
     <nav>
       <ul>
         <li><a href="#" class="logo">
@@ -35,32 +37,38 @@
       </ul>
     </nav>
 
-    <div class="room-list">
+    <!-- Equipment List -->
+    <div class="equipment-list">
       <?php
-      include 'room_db.php';
+      include 'equipment_db.php'; // Include your database connection code
 
-      // Retrieve and display room information
-      $sql = "SELECT * FROM rooms";
+      // Retrieve and display equipment information
+      $sql = "SELECT * FROM equipment";
       $result = $mysqli->query($sql);
 
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo '<div class="room">';
-      echo '<h2>' . $row['room_name'] . '</h2>';
-      echo '<p>' . $row['floor'] . '</p>';
-      echo '<p>CAPACITY: ' . $row['capacity'] . '</p>';
-      echo '<p>' . ($row['available'] ? 'Available' : 'Not Available') . '</p>';
-      echo '<a href="edit_room.php?id=' . $row['id'] . '">Edit Room</a>'; // Edit Room link
-      echo '</div>';
+          echo '<div class="equipment">';
+          echo '<h2>' . $row['equipment_name'] . '</h2>';
+          echo '<p>QUANTITY: ' . $row['quantity'] . '</p>';
+
+          // Check if an image is available
+          if ($row['image_path'] !== null) {
+            echo '<img src="' . $row['image_path'] . '" alt="Equipment Image">';
+          }
+         
+
+          echo '<a href="edit_equipment.php?id=' . $row['id'] . '">Edit Equipment</a>';
+          echo '</div>';
         }
       } else {
-        echo 'No rooms available';
+        echo 'No equipment available';
       }
       ?>
     </div>
 
-    <!-- Add Room button -->
-    <button class="add-room-btn" onclick="location.href='add_room.php'">Add Room</button>
+    <!-- Add Equipment button -->
+    <button class="edit-button" onclick="location.href='add_equipment.php'">Add Equipment</button>
   </div>
 </body>
 
