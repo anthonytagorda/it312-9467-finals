@@ -7,6 +7,16 @@
   <title>Equipment Dashboard</title>
   <link rel="stylesheet" href="../styles/equipment.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    /* Add a CSS rule to set the fixed size for the images */
+    .equipment img {
+      width: 100px; /* Set the desired width */
+      height: 100px; /* Set the desired height */
+      object-fit: cover; /* Preserve aspect ratio and cover the entire container */
+      border: 1px solid #ddd; /* Add a border for better visibility */
+      border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    }
+  </style>
 </head>
 
 <body>
@@ -40,7 +50,7 @@
     <!-- Equipment List -->
     <div class="equipment-list">
       <?php
-      include 'equipment_db.php'; // Include your database connection code
+      include 'equipment_db.php';
 
       // Retrieve and display equipment information
       $sql = "SELECT * FROM equipment";
@@ -56,7 +66,6 @@
           if ($row['image_path'] !== null) {
             echo '<img src="' . $row['image_path'] . '" alt="Equipment Image">';
           }
-         
 
           echo '<a href="edit_equipment.php?id=' . $row['id'] . '">Edit Equipment</a>';
           echo '</div>';
@@ -68,8 +77,9 @@
     </div>
 
     <!-- Add Equipment button -->
-    <button class="edit-button" onclick="location.href='add_equipment.php'">Add Equipment</button>
+    <button class="add-equipment-btn" onclick="location.href='add_equipment.php'">Add Equipment</button>
   </div>
 </body>
 
 </html>
+

@@ -109,3 +109,11 @@ a:hover{
       .edit-button:hover {
         background-color: #45a049;
       }
+
+      .equipment img {
+        width: 100px; /* Set the desired width */
+        height: 100px; /* Set the desired height */
+        object-fit: cover; /* Preserve aspect ratio and cover the entire container */
+        border: 1px solid #ddd; /* Add a border for better visibility */
+        border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+      }
