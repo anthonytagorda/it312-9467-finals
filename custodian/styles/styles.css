@@ -24,6 +24,10 @@ body {
     height: auto;
     margin-left: 20px;
 }
+
+#category-selector {
+    margin-right: 20px;
+}
 .logo {
     padding: 15px;
     background-color: #ffffff;
