@@ -29,18 +29,18 @@ if (isset($_SESSION["user_id"])) {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     </head>
     <body>
-      <div class="container">
+    <div class="container">
         <nav>
           <ul>
             <li><a href="#" class="logo">
               <img src="/logo.jpg" alt="">
               <span class="nav-item">DashBoard</span>
             </a></li>
-            <li><a href="#">
+            <li><a href="index.php">
               <i class="fas fa-home"></i>
               <span class="nav-item">Home</span>
             </a></li>
-            <li><a href="">
+            <li><a href="room.php">
               <i class="fas fa-user"></i>
               <span class="nav-item">Add Rooms</span>
             </a></li>
