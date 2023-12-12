@@ -139,3 +139,21 @@ header a {
 .wrapper .main_content .info div {
     margin-bottom: 20px;
 }
+
+.welcome-box {
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(to right, #fff, #ccc);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+  }
+  
+.welcome-box h1 {
+    font-size: 20px;
+    margin: 50px;
+    text-align: left;
+  }
+  
