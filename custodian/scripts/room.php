@@ -28,7 +28,7 @@
             <i class="fas fa-wallet"></i>
             <span class="nav-item">Add Equipment</span>
           </a></li>
-        <li><a href="">
+        <li><a href="manage_rental.php">
             <i class="fas fa-chart-bar"></i>
             <span class="nav-item">Manage Rental</span>
           </a></li>
