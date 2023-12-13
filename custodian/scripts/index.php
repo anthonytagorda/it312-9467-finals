@@ -51,6 +51,12 @@ if (isset($_SESSION["user_id"])) {
             <li><a href="manage_rental.php">
               <i class="fas fa-chart-bar"></i>
               <span class="nav-item">Manage Rental</span>
+            </a></li>
+            <?php if(isset($_SESSION['user_id'])) : ?>
+            <li><a href="edit_profile.php">Edit Profile</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        <?php else : ?>
+        <?php endif; ?>
           </ul>
         </nav>
 

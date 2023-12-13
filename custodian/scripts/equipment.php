@@ -44,6 +44,10 @@
             <i class="fas fa-chart-bar"></i>
             <span class="nav-item">Manage Rental</span>
           </a></li>
+          <li><a href="logout.php">
+            <i class="fas fa-chart-bar"></i>
+            <span class="nav-item">Logout</span>
+          </a></li>
       </ul>
     </nav>
 

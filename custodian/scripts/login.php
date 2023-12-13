@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <input type="password" name="password" id="password">
                 </div>
                 <div class="forgot">
-                    <a href="contact_admin.html">Forgot Password?</a>
+                    <a href="forgot_password.php">Forgot Password?</a>
                 </div>
                 <button type="submit" class="login-button">Login</button>
                 <div class="login-register">
