@@ -1,28 +1,43 @@
-<?php
-// process_add_room.php
+<?php include 'room_db.php';
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Include your database connection code
-    include 'room_db.php';
+// Retrieve form data
+$roomNo = $_POST['roomNo'];
+$roomType = $_POST['roomType'];
+$roomLocation = $_POST['roomLocation'];
+$capacity = $_POST['capacity'];
+$roomStatus = $_POST['roomStatus'];
 
-    // Retrieve data from the form
-    $roomName = $_POST['room_name'];
-    $floor = $_POST['floor'];
-    $capacity = $_POST['capacity'];
-    $availability = $_POST['availability'];
+// Upload room photo
+$targetDir = "uploads/";
+$targetFile = $targetDir . basename($_FILES["roomPhoto"]["name"]);
+move_uploaded_file($_FILES["roomPhoto"]["tmp_name"], $targetFile);
 
-    // Insert data into the database
-    $sql = "INSERT INTO rooms (room_name, floor, capacity, available) VALUES ('$roomName', '$floor', '$capacity', '$availability')";
+// Insert data into the database
+$sql = "INSERT INTO rooms (room_no, room_type, room_location, capacity, room_status, room_photo) VALUES (?, ?, ?, ?, ?, ?)";
+$stmt = $mysqli->prepare($sql);
+$stmt->bind_param("sssiss", $roomNo, $roomType, $roomLocation, $capacity, $roomStatus, $targetFile);
 
-    if ($mysqli->query($sql) === TRUE) {
-        echo "Room added successfully!";
-        echo '<br><br><a href="room.php">Go Back</a>'; // Go Back button
-    } else {
-        echo "Error: " . $sql . "<br>" . $mysqli->error;
-    }
-
-    // Close the database connection
-    $mysqli->close();
+if ($stmt->execute()) {
+    header("Location: add_room.php?status=success");
+} else {
+    header("Location: add_room.php?status=error");
 }
+
+$stmt->close();
+$mysqli->close();
+
 ?>
+
+<?php
+session_start();
+
+// Your room addition logic here
+
+// After successfully adding the room
+$_SESSION['room_added'] = true;
+
+// Redirect to room.php or wherever appropriate
+header("Location: room.php");
+exit();
+?>
+

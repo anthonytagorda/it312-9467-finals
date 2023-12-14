@@ -10,24 +10,30 @@
 <body>
   <h1>Add Room</h1>
 
-  <form action="add_room_process.php" method="post">
-    <label for="room_name">Room Name:</label>
-    <input type="text" id="room_name" name="room_name" required>
+  <form action="add_room_process.php" method="post" enctype="multipart/form-data">
+        <label for="roomNo">Room Number:</label>
+        <input type="text" name="roomNo" required>
 
-    <label for="floor">Floor:</label>
-    <input type="text" id="floor" name="floor" required>
+        <label for="roomType">Room Type:</label>
+        <input type="text" name="roomType">
 
-    <label for="capacity">Capacity:</label>
-    <input type="number" id="capacity" name="capacity" required>
+        <label for="roomLocation">Room Location:</label>
+        <input type="text" name="roomLocation">
 
-    <label for="availability">Availability:</label>
-    <select id="availability" name="availability" required>
-      <option value="1">Available</option>
-      <option value="0">Not Available</option>
-    </select>
+        <label for="capacity">Capacity:</label>
+        <input type="number" name="capacity" required>
 
-    <button type="submit">Add Room</button>
-  </form>
+        <label for="roomStatus">Room Status:</label>
+        <select name="roomStatus" required>
+            <option value="1">Available</option>
+            <option value="0">Not Available</option>
+        </select>
+
+        <label for="roomPhoto">Room Photo:</label>
+        <input type="file" name="roomPhoto">
+
+        <button type="submit">Add Room</button>
+    </form>
 </body>
 
 </html>

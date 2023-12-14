@@ -1,21 +1,22 @@
-<!-- process_add_equipment.php -->
+<!-- add_equipment_process.php -->
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include 'equipment_db.php'; // Include your database connection code
 
   // Retrieve data from the form
-  $equipmentName = $_POST['equipment_name'];
-  $quantity = $_POST['quantity'];
+  $equipType = $_POST['equip_type'];
+  $equipDescription = $_POST['equip_description'];
+  $equipStatus = $_POST['equip_status'];
 
   // File upload handling
   $targetDir = "uploads/"; // Create a directory named "uploads" to store uploaded images
-  $targetFile = $targetDir . basename($_FILES["equipment_image"]["name"]);
+  $targetFile = $targetDir . basename($_FILES["equip_photo"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
   // Check if the image file is a actual image or fake image
   if (isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["equipment_image"]["tmp_name"]);
+    $check = getimagesize($_FILES["equip_photo"]["tmp_name"]);
     if ($check !== false) {
       echo "File is an image - " . $check["mime"] . ".";
       $uploadOk = 1;
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Check file size
-  if ($_FILES["equipment_image"]["size"] > 500000) {
+  if ($_FILES["equip_photo"]["size"] > 500000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
   }
@@ -49,15 +50,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Sorry, your file was not uploaded.";
   } else {
     // If everything is ok, try to upload file
-    if (move_uploaded_file($_FILES["equipment_image"]["tmp_name"], $targetFile)) {
-      echo "The file " . htmlspecialchars(basename($_FILES["equipment_image"]["name"])) . " has been uploaded.";
+    if (move_uploaded_file($_FILES["equip_photo"]["tmp_name"], $targetFile)) {
+      echo "The file " . htmlspecialchars(basename($_FILES["equip_photo"]["name"])) . " has been uploaded.";
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
   }
 
   // Insert data into the database
-  $sql = "INSERT INTO equipment (equipment_name, quantity, image_path) VALUES ('$equipmentName', '$quantity', '$targetFile')";
+  $sql = "INSERT INTO equipment (equip_type, equip_description, equip_status, equip_photo) VALUES ('$equipType', '$equipDescription', '$equipStatus', '$targetFile')";
 
   if ($mysqli->query($sql) === TRUE) {
     echo "Equipment added successfully!";
