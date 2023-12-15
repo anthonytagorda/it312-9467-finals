@@ -38,29 +38,41 @@
           </a></li>
       </ul>
     </nav>
+<?php
+        // Check for room addition success and display notification
+        if (isset($_SESSION['room_added']) && $_SESSION['room_added']) {
+            echo '<div class="notification">Room added successfully!</div>';
+            // Reset the session variable
+            unset($_SESSION['room_added']);
+        }
+?>
 
     <div class="room-list">
-      <?php
-      include 'room_db.php';
+    <?php
+            include 'room_db.php';
 
-      // Retrieve and display room information
-      $sql = "SELECT * FROM rooms";
-      $result = $mysqli->query($sql);
+            // Retrieve and display room information
+            $sql = "SELECT * FROM rooms";
+            $result = $mysqli->query($sql);
 
-      if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          echo '<div class="room">';
-      echo '<h2>' . $row['room_name'] . '</h2>';
-      echo '<p>' . $row['floor'] . '</p>';
-      echo '<p>CAPACITY: ' . $row['capacity'] . '</p>';
-      echo '<p>' . ($row['available'] ? 'Available' : 'Not Available') . '</p>';
-      echo '<a href="edit_room.php?id=' . $row['id'] . '">Edit Room</a>'; // Edit Room link
-      echo '</div>';
-        }
-      } else {
-        echo 'No rooms available';
-      }
-      ?>
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="room">';
+                    echo '<h2>' . $row['room_no'] . '</h2>';
+                    echo '<p>' . $row['room_location'] . '</p>';
+                    echo '<p>TYPE: ' . $row['room_type'] . '</p>';
+                    echo '<p>CAPACITY: ' . $row['capacity'] . '</p>';
+                    echo '<p>' . ($row['room_status'] ? 'Available' : 'Not Available') . '</p>';
+                    echo '<img src="' . $row['room_photo'] . '" alt="Room Photo" class="room-photo">';
+                    echo '<button>Edit Room</button>';
+                    echo '</div>';
+                }
+            } else {
+                echo 'No rooms available';
+            }
+
+            $mysqli->close();
+            ?>
     </div>
 
     <!-- Add Room button -->

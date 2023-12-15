@@ -14,16 +14,25 @@
     <h1>Add Equipment</h1>
 
     <form action="add_equipment_process.php" method="post" enctype="multipart/form-data">
-      <label for="equipment_name">Equipment Name:</label>
-      <input type="text" id="equipment_name" name="equipment_name" required>
+        <label for="equipment_name">Equipment Name:</label>
+        <input type="text" name="equipment_name" id="equipment_name" required>
 
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" required>
+        <label for="equip_type">Equipment Type:</label>
+        <input type="text" name="equip_type" id="equip_type" required>
 
-      <label for="equipment_image">Upload Photo:</label>
-      <input type="file" id="equipment_image" name="equipment_image">
+        <label for="equip_description">Equipment Description:</label>
+        <textarea name="equip_description" id="equip_description" required></textarea>
 
-      <button type="submit">Add Equipment</button>
+        <label for="equip_status">Equipment Status:</label>
+        <select name="equip_status" id="equip_status" required>
+            <option value="1">Available</option>
+            <option value="0">Not Available</option>
+        </select>
+
+        <label for="equipment_image">Equipment Photo:</label>
+        <input type="file" name="equipment_image" id="equipment_image" required>
+
+        <button type="submit">Add Equipment</button>
     </form>
   </div>
 </body>

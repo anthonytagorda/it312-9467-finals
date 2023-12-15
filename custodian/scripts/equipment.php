@@ -53,31 +53,36 @@
 
     <!-- Equipment List -->
     <div class="equipment-list">
-      <?php
-      include 'equipment_db.php';
+    <?php
+    include 'equipment_db.php';
 
-      // Retrieve and display equipment information
-      $sql = "SELECT * FROM equipment";
-      $result = $mysqli->query($sql);
+    // Retrieve and display equipment information
+    $sql = "SELECT * FROM equipment";
+    $result = $mysqli->query($sql);
 
-      if ($result->num_rows > 0) {
+    if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo '<div class="equipment">';
-          echo '<h2>' . $row['equipment_name'] . '</h2>';
-          echo '<p>QUANTITY: ' . $row['quantity'] . '</p>';
+            echo '<div class="equipment">';
+            echo '<h2>' . $row['equipment_name'] . '</h2>'; 
+            echo '<p>Type: ' . $row['equip_type'] . '</p>';
+            echo '<p>Description: ' . $row['equip_description'] . '</p>';
+            echo '<p>Status: ' . ($row['equip_status'] ? 'Available' : 'Not Available') . '</p>';
 
-          // Check if an image is available
-          if ($row['image_path'] !== null) {
-            echo '<img src="' . $row['image_path'] . '" alt="Equipment Image">';
-          }
+            // Display the image if available
+            if (!empty($row['equip_photo'])) {
+                echo '<img src="' . $row['equip_photo'] . '" alt="Equipment Photo">';
+            }
 
-          echo '<a href="edit_equipment.php?id=' . $row['id'] . '">Edit Equipment</a>';
-          echo '</div>';
+            echo '<button>Edit Equipment</button>';
+            echo '</div>';
         }
-      } else {
+    } else {
         echo 'No equipment available';
-      }
-      ?>
+    }
+
+    // Close the database connection
+    $mysqli->close();
+    ?>
     </div>
 
     <!-- Add Equipment button -->
