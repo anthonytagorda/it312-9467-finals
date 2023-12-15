@@ -142,3 +142,7 @@ body {
     color: #162938;
     font-weight: 600;
 }
+
+.alert {
+    color: red; 
+}
