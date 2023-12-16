@@ -1,7 +1,5 @@
 const mysql = require('mysql');
 const path = require('path');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
 // create database connection
 const db = mysql.createConnection({
@@ -17,29 +15,28 @@ exports.login = async (req, res) => {
 
     try {
         // Check if the school ID is already registered
-        const results = await db.query('SELECT school_id, password FROM credentials WHERE school_id = ?', [school_id]);
+        const results = await db.query('SELECT * FROM credentials WHERE school_id = ?', [school_id]);
 
         if (results.length > 0) {
-            const storedPassword = results[0].password;
+            const user = results[0];
 
-            // Compare the provided password with the stored hashed password
-            const passwordMatch = await bcrypt.compare(password, storedPassword);
-
-            if (passwordMatch) {
-                // Password is correct, proceed to another page
-                // You can redirect to a different route or render another page
+            // Check if the entered password matches the password in the database
+            if (password === user.password) {
+                // Passwords match, redirect to the user_dashboard
                 return res.render('user_dashboard', {
                     message: 'Login successful!',
-                    images: ['./assets/images/rentify-icon.png']
-                    // Include other data needed for rendering the page
                 });
             } else {
-                // Password is incorrect, inform the user
+                // Passwords don't match, return to user_login
                 return res.render('user_login', {
-                    message: 'Incorrect password. Please try again.',
-                    images: ['./assets/images/rentify-icon.png']
+                    message: 'Invalid password!',
                 });
             }
+        } else {
+            // School ID is not registered
+            return res.render('user_login', {
+                message: 'School ID is not yet registered!',
+            });
         }
     } catch (error) {
         console.log(error);

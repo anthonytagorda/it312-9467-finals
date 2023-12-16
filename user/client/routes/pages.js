@@ -12,7 +12,11 @@ router.get("/user_login", (req, res) => {
 });
 
 router.get('/contact_admin', (req, res) => {
-    res.render('contact_admin')
+    res.render('contact_admin');
+});
+
+router.get('/user_dashboard', (req, res) => {
+    res.render('user_dashboard');
 });
 
 module.exports = router;

@@ -11,3 +11,11 @@ allSideMenu.forEach(item=>{
         li.classList.add('active');
     })
 });
+
+// TOGGLE SIDEBAR
+const menuBar = document.querySelector('#content nav .bx.bx-menu-alt-left');
+const sideBar = document.getElementById('sidebar');
+
+menuBar.addEventListener('click', function () {
+    sideBar.classList.toggle('hide');
+})
