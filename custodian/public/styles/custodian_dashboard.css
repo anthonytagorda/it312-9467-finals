@@ -152,6 +152,12 @@ body {
   position: relative;
   width: calc(100 - 260px);
   left: 260px;
+  transition: width 0.3s ease;
+}
+
+#sidebar.hide ~ #content {
+  width: calc(100% - 85px);
+  left: 85px;
 }
 
 /* END OF CONTENT */
@@ -238,7 +244,8 @@ body {
 
 #content nav .notification {
   font-size: 20px;
-  position: relative;
+  position: fixed;
+  right: 70px;
 }
 
 #content nav .notification .num {
@@ -264,6 +271,8 @@ body {
 
 #content nav .profile {
   font-size: 24px;
+  position: fixed;
+  right: 30px;
 }
 
 /* END OF NAVBAR */
