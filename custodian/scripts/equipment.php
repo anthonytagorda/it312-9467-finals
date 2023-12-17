@@ -37,7 +37,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="../scripts/transaction_history.php">
           <i class='bx bx-clipboard'></i>
           <span class="text">Transaction History</span>
         </a>
