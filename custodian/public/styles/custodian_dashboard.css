@@ -168,6 +168,7 @@ body {
   padding: 0 24px;
   display: flex;
   align-items: center;
+  grid-gap: 24px;
 }
 
 #content nav::before {
@@ -212,6 +213,7 @@ body {
   display: flex;
   align-items: center;
   height: 36px;
+
 }
 
 #content nav form .form-input input {
