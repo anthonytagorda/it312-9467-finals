@@ -168,7 +168,6 @@ body {
   padding: 0 24px;
   display: flex;
   align-items: center;
-  grid-gap: 24px;
 }
 
 #content nav::before {
