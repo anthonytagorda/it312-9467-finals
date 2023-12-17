@@ -151,6 +151,12 @@ body {
   position: relative;
   width: calc(100 - 260px);
   left: 260px;
+  transition: width 0.3s ease;
+}
+
+#sidebar.hide ~ #content {
+  width: calc(100% - 85px);
+  left: 85px;
 }
 
 /* END OF CONTENT */
@@ -207,7 +213,6 @@ body {
   display: flex;
   align-items: center;
   height: 36px;
-
 }
 
 #content nav form .form-input input {
