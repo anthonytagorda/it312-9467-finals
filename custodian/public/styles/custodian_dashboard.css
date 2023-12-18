@@ -155,7 +155,7 @@ body {
   transition: width 0.3s ease;
 }
 
-#sidebar.hide ~ #content {
+#sidebar.hide~#content {
   width: calc(100% - 85px);
   left: 85px;
 }
@@ -279,13 +279,14 @@ body {
 
 /* ROOMS LIST */
 
+/*
 .notification {
-  background-color: #4CAF50;
   color: white;
   text-align: center;
   padding: 10px;
   margin-bottom: 15px;
 }
+*/
 
 .room-list {
   display: flex;
@@ -337,7 +338,6 @@ button:hover {
   display: inline-block;
   padding: 10px 15px;
   background-color: #F5CB5C;
-  /* Change the background color to your preference */
   color: #000000;
   text-decoration: none;
   border-radius: 5px;
@@ -346,32 +346,78 @@ button:hover {
 
 .edit-room-btn:hover {
   background-color: #F5CB5C;
-  /* Change the hover color to your preference */
+}
+
+#add-room-button {
+  position: fixed;
+  bottom: 55px;
+  right: 55px;
+  background-color: #F5CB5C;
+  color: #000000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /* EQUIPMENTS LIST */
 .equipment-list {
   display: flex;
-  flex-wrap: wrap; /* Ensure the equipment items wrap to the next line if the width is not enough */
+  flex-wrap: wrap;
 }
 
 .equipment {
-  width: calc(33.33% - 20px); /* Adjust the width of each equipment item based on your layout */
+  width: calc(33.33% - 20px);
   margin: 10px;
-  padding: 15px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  box-sizing: border-box;
 }
 
 /* Add media query for responsiveness */
 @media (max-width: 768px) {
   #content {
-    margin-left: 0; /* Adjust the margin for smaller screens */
+    margin-left: 0;
   }
 
   .equipment {
-    width: 100%; /* Make each equipment item take the full width on smaller screens */
+    width: 100%;
+    border-width: 0.5px;
   }
+}
+
+#add-equipment-button {
+  position: fixed;
+  bottom: 55px;
+  right: 55px;
+  background-color: #F5CB5C;
+  color: #000000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* DASHBOARD GREETING */
+.content-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+}
+
+.content-box h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.content-box p {
+  font-size: 16px;
+  color: #666;
 }

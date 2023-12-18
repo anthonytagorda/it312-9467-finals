@@ -20,7 +20,7 @@
         </a>
         <ul class="side-menu top">
             <li>
-                <a href="../pages/custodian_dashboard.html">
+                <a href="../scripts/custodian_dashboard.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
@@ -93,9 +93,7 @@
                 <i class='bx bxs-user-circle'></i>
             </a>
         </nav>
-    </section>
-    <!-- END OF CONTENT -->
-    <!-- TRANSACTION HISTORY -->
+           <!-- TRANSACTION HISTORY -->
     <div class="transaction-history">
         <?php
         // Include your database connection file
@@ -132,6 +130,8 @@
 
         $mysqli->close();
         ?>
+    </section>
+    <!-- END OF CONTENT -->
     </div>
     <!-- END OF TRANSACTION HISTORY -->
     <script src="../public/scripts/script.js"></script>

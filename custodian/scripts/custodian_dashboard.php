@@ -1,14 +1,34 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    
+    $mysqli = require __DIR__ . "/database.php";
+    
+    $sql = "SELECT * FROM custodian
+            WHERE id = {$_SESSION["user_id"]}";
+            
+    $result = $mysqli->query($sql);
+    
+    $user = $result->fetch_assoc();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Box Icons [https://boxicons.com/usage]-->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Custodian Dashboard</title>
     <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
     <link rel="stylesheet" href="../public/styles/custodian_dashboard.css">
 </head>
+
 <body>
     <!--START OF SIDEBAR-->
     <section id="sidebar">
@@ -24,7 +44,7 @@
             </li>
             <li>
                 <a href="../scripts/room.php">
-                    <i class='bx bxs-door-open' ></i>
+                    <i class='bx bxs-door-open'></i>
                     <span class="text">Rooms</span>
                 </a>
             </li>
@@ -36,41 +56,41 @@
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-clipboard' ></i>
+                    <i class='bx bx-clipboard'></i>
                     <span class="text">Transaction History</span>
                 </a>
             </li>
-        <ul class="side-menu bottom">
-            <li>
-                <a href="#" class="report">
-                    <i class='bx bxs-shield-minus' ></i>
-                    <span class="text">Report</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxs-cog' ></i>
-                    <span class="text">Settings</span>
-                </a>
-            </li>
-            <li>
-                <a href="custodian_login.hbs" class="logout">
-                    <i class='bx bx-log-out' ></i>
-                    <span class="text">Logout</span>
-                </a>
-            </li>
-        </ul>
+            <ul class="side-menu bottom">
+                <li>
+                    <a href="#" class="report">
+                        <i class='bx bxs-shield-minus'></i>
+                        <span class="text">Report</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-cog'></i>
+                        <span class="text">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="login.php" class="logout">
+                        <i class='bx bx-log-out'></i>
+                        <span class="text">Logout</span>
+                    </a>
+                </li>
+            </ul>
     </section>
     <!--END OF SIDEBAR-->
     <!--START OF CONTENT-->
     <section id="content">
         <nav>
-            <i class='bx bx-menu-alt-left' ></i>
+            <i class='bx bx-menu-alt-left'></i>
             <a href="#" class="nav-link">Categories</a>
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search for Room or Equipment">
-                    <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
             </form>
             <!--Notification Feature-->
@@ -84,8 +104,14 @@
                 <i class='bx bxs-user-circle'></i>
             </a>
         </nav>
-    </section>
+        <!-- DASHBOARD GREETING-->
+        <div class="content-box">
+            <h1>Hello <?= htmlspecialchars($user["name"]) ?></h1>
+            <p></p>
+        </div>
     <!--END OF CONTENT-->
+
 </body>
 <script src="../public/scripts/script.js"></script>
+
 </html>
