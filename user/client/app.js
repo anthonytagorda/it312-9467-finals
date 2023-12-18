@@ -25,6 +25,20 @@ app.use(express.static(publicDir));
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 
+// Fetch number of Reservations
+app.get('/reservationCount', (req, res) => {
+    const query = 'SELECT COUNT(*) as count FROM reservations';
+    db.query(query, (err, results) => {
+        if (err) {
+            res.status(500).send('Error fetching data.');
+            return;
+        }
+        const count = results[0].count;
+        res.json({ count });
+    });
+});
+
+
 const port = process.env.PORT;
 
 app.listen(port, () => {

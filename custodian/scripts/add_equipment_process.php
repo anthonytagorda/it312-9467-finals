@@ -1,7 +1,7 @@
 <!-- add_equipment_process.php -->
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  include 'equipment_db.php'; // Include your database connection code
+  include 'rentify.php'; // Include your database connection code
 
   // Retrieve data from the form
   $equipType = $_POST['equip_type'];
