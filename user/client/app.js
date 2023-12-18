@@ -27,7 +27,7 @@ app.use(express.json());
 
 app.set('view engine', 'hbs');
 
-// connect to database 
+// Connect to database 
 db.connect((error) => {
     if (error) {
         console.log(error);
@@ -37,9 +37,11 @@ db.connect((error) => {
 });
 
 // Define Routes (refer to router/pages.js)
-app.use('/', require('./routes/pages'))
-app.use('/auth', require('./routes/auth'))
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
-app.listen(5000, () => {
-    console.log("Server started at port 5000");
+const port = process.env.PORT;
+
+app.listen(port, () => {
+    console.log(`Server started at port ${port}`);
 });
