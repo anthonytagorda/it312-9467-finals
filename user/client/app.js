@@ -1,40 +1,25 @@
+// app.js
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql');
+const app = express();
+const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 
-dotenv.config();
-
-const app = express();
-
-// create database connection
-const db = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
-});
-
-// retrieve assets 
-const publicDir = path.join(__dirname, './public');
-app.use(express.static(publicDir));
+dotenv.config({ path: './.env' });
+const db = require('./model/db');
 
 // Parse URL-encoded bodies (as sent by HTML forms)
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
+app.use(cookieParser());
 
 app.set('view engine', 'hbs');
 
-// Connect to database 
-db.connect((error) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log("Database Connected!");
-    }
-});
+// retrieve assets
+const publicDir = path.join(__dirname, './public');
+app.use(express.static(publicDir));
 
 // Define Routes (refer to router/pages.js)
 app.use('/', require('./routes/pages'));
