@@ -358,7 +358,7 @@ button:hover {
 .equipment {
   width: calc(33.33% - 20px); /* Adjust the width of each equipment item based on your layout */
   margin: 10px;
-  padding: 15px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
