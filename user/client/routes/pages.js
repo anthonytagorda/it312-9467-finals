@@ -18,4 +18,8 @@ router.get('/contact_admin', (req, res) => {
     res.render('contact_admin');
 });
 
+router.get('/user_login', (req, res) => {
+  res.render('user_login');
+});
+
 module.exports = router;
