@@ -17,6 +17,9 @@
         <label for="equipment_name">Equipment Name:</label>
         <input type="text" name="equipment_name" id="equipment_name" required>
 
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" required>
+
         <label for="equip_type">Equipment Type:</label>
         <input type="text" name="equip_type" id="equip_type" required>
 
@@ -30,7 +33,7 @@
         </select>
 
         <label for="equipment_image">Equipment Photo:</label>
-        <input type="file" name="equipment_image" id="equipment_image" required>
+        <input type="file" name="equip_photo" id="equipment_image" required>
 
         <button type="submit">Add Equipment</button>
     </form>

@@ -19,7 +19,7 @@
     </a>
     <ul class="side-menu top">
       <li>
-        <a href="../pages/custodian_dashboard.html">
+        <a href="../scripts/custodian_dashboard.php">
           <i class='bx bxs-dashboard'></i>
           <span class="text">Dashboard</span>
         </a>
@@ -91,9 +91,7 @@
         <i class='bx bxs-user-circle'></i>
       </a>
     </nav>
-  </section>
-  <!--END OF CONTENT-->
-  <!--ROOMS LIST-->
+     <!--EQUIPMENTS LIST-->
   <?php
   include 'equipment_db.php'; // Include your equipment database connection
   
@@ -148,6 +146,11 @@
 
   $mysqli->close();
   ?>
+  </section>
+  <!--END OF CONTENT-->
+
+  <!-- "Add Equipments" Button -->
+  <button id="add-equipment-button" onclick="location.href='../scripts/add_equipment.php'">Add Equipment</button>
   </div>
 </body>
 <script src="../public/scripts/script.js"></script>

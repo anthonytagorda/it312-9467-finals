@@ -4,12 +4,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include 'equipment_db.php'; // Include your database connection code
 
   // Retrieve data from the form
+  $equipName = $_POST['equipment_name'];
+  $quantity = $_POST['quantity'];
   $equipType = $_POST['equip_type'];
   $equipDescription = $_POST['equip_description'];
   $equipStatus = $_POST['equip_status'];
 
   // File upload handling
-  $targetDir = "uploads/"; // Create a directory named "uploads" to store uploaded images
+  $targetDir = "uploads/";
   $targetFile = $targetDir . basename($_FILES["equip_photo"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -58,7 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Insert data into the database
-  $sql = "INSERT INTO equipment (equip_type, equip_description, equip_status, equip_photo) VALUES ('$equipType', '$equipDescription', '$equipStatus', '$targetFile')";
+  $sql = "INSERT INTO equipment (equipment_name, quantity, equip_type, equip_description, equip_status, equip_photo) 
+          VALUES ('$equipName', '$quantity', '$equipType', '$equipDescription', '$equipStatus', '$targetFile')";
 
   if ($mysqli->query($sql) === TRUE) {
     echo "Equipment added successfully!";

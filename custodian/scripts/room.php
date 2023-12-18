@@ -20,7 +20,7 @@
     </a>
     <ul class="side-menu top">
       <li>
-        <a href="../pages/custodian_dashboard.html">
+        <a href="../scripts/custodian_dashboard.php">
           <i class='bx bxs-dashboard'></i>
           <span class="text">Dashboard</span>
         </a>
@@ -92,10 +92,8 @@
         <i class='bx bxs-user-circle'></i>
       </a>
     </nav>
-  </section>
-  <!--END OF CONTENT-->
-  <!--ROOMS LIST-->
-  <?php
+<!--ROOMS LIST-->
+<?php
   // Check for room addition success and display notification
   if (isset($_SESSION['room_added']) && $_SESSION['room_added']) {
     echo '<div class="notification">Room added successfully!</div>';
@@ -161,6 +159,11 @@
 
     $mysqli->close();
     ?>
+  </section>
+  <!--END OF CONTENT-->
+
+  <!-- "Add Room" Button -->
+  <button id="add-room-button" onclick="location.href='../scripts/add_room.php'">Add Room</button>
   </div>
 
 
