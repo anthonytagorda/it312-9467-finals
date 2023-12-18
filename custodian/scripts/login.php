@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             $_SESSION["user_id"] = $user["id"];
             
-            header("Location: index.php");
+            header("Location: ../pages/custodian_dashboard.html");
             exit;
         }
     }
@@ -40,37 +40,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rentify Login</title>
-    <link rel="icon" href="../../../common/assets/images/r-icon.png" type="image/png">
-    <link rel="stylesheet" href="../styles/globals.css">
-    <link rel="stylesheet" href="../styles/custodian_login.css">
+    <link rel="icon" href='/assets/images/r-icon.png' type="image/png">
+    <link rel="stylesheet" href="../public/styles/custodian_login.css">
 </head>
 <body>
     <div class="wrapper">
+    <?php if ($is_invalid): ?>
+        <script>
+            alert("Invalid Login");
+        </script>
+    <?php endif; ?>
         <div class="form-box login">
-            <img src="../../../common/assets/images/rentify-icon.png" alt="Rentify Logo" class="logo-img">
-            <h2>Hi there! </h2>
-            <h4>Log in to Rentify</h4>
-            <form method="post">
+            <img src='/assets/images/rentify-icon.png' alt="Rentify Logo" class="logo-img">
+            <h2>Hi there! Welcome back </h2>
+            <h4>Log in to Rentify with your School ID</h4>
+            <form method="POST">
                 <div class="input-box">
-                <label for="email">email</label>
-                <input type="email" name="email" id="email"
-               value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
+                    <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+                    <label>Username</label>
+                    <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" placeholder ="Username" required>
                 </div>
                 <div class="input-box">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="forgot">
-                    <a href="forgot_password.php">Forgot Password?</a>
+                    <a href="/contact_admin">Forgot Password?</a>
                 </div>
                 <button type="submit" class="login-button">Login</button>
                 <div class="login-register">
                     <p> Don't have an account?
-                        <a href="../pages/register.html" class="register-link">Register</a>
+                        <a href="/contact_admin" class="register-link">Register</a>
                     </p>
                 </div>
             </form>
         </div>
     </div>
+    <!--Ionics Icons [https://ionic.io/ionicons/usage]-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
 </html>

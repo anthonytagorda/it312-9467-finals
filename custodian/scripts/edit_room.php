@@ -21,30 +21,38 @@
       $roomId = $_GET['id'];
 
       // Retrieve room information based on the ID
-      $sql = "SELECT * FROM rooms WHERE id = $roomId";
+      $sql = "SELECT * FROM rooms WHERE room_id = $roomId";  // Adjusted to use 'room_id' as the column name
       $result = $mysqli->query($sql);
 
       if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-      ?>
+    ?>
         <form action="edit_room_process.php" method="post">
           <!-- Include hidden input field for the room ID -->
-          <input type="hidden" name="id" value="<?php echo $roomId; ?>">
+          <input type="hidden" name="room_id" value="<?php echo $roomId; ?>"> <!-- Adjusted to use 'room_id' as the input name -->
 
-          <label for="room_name">Room Name:</label>
-          <input type="text" id="room_name" name="room_name" value="<?php echo $row['room_name']; ?>" required>
+          <label for="room_no">Room Number:</label>
+          <input type="text" id="room_no" name="room_no" value="<?php echo $row['room_no']; ?>" required>
 
-          <label for="floor">Floor:</label>
-          <input type="text" id="floor" name="floor" value="<?php echo $row['floor']; ?>" required>
+          <label for="room_location">Room Location:</label>
+          <input type="text" id="room_location" name="room_location" value="<?php echo $row['room_location']; ?>" required>
+
+          <label for="room_type">Room Type:</label>
+          <input type="text" id="room_type" name="room_type" value="<?php echo $row['room_type']; ?>" required>
 
           <label for="capacity">Capacity:</label>
           <input type="number" id="capacity" name="capacity" value="<?php echo $row['capacity']; ?>" required>
 
-          <label for="availability">Availability:</label>
-          <select id="availability" name="availability" required>
-            <option value="1" <?php echo $row['available'] ? 'selected' : ''; ?>>Available</option>
-            <option value="0" <?php echo !$row['available'] ? 'selected' : ''; ?>>Not Available</option>
+          <label for="room_status">Availability:</label>
+          <select id="room_status" name="room_status" required>
+            <option value="1" <?php echo $row['room_status'] ? 'selected' : ''; ?>>Available</option>
+            <option value="0" <?php echo !$row['room_status'] ? 'selected' : ''; ?>>Not Available</option>
           </select>
+
+          <label for="room_photo">Room Photo:</label>
+          <input type="text" id="room_photo" name="room_photo" value="<?php echo $row['room_photo']; ?>" required>
+
+          <!-- Additional fields can be added based on your database schema -->
 
           <button type="submit">Update Room</button>
         </form>
