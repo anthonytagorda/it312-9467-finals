@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$dbname = "equipment_db";
+$dbname = "rentify";
 $username = "root";
 $password = "";
 

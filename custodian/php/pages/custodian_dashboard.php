@@ -3,14 +3,14 @@
 session_start();
 
 if (isset($_SESSION["user_id"])) {
-    
-    $mysqli = require __DIR__ . "/database.php";
-    
+
+    $mysqli = require __DIR__ . "../database.php";
+
     $sql = "SELECT * FROM custodian
             WHERE id = {$_SESSION["user_id"]}";
-            
+
     $result = $mysqli->query($sql);
-    
+
     $user = $result->fetch_assoc();
 }
 
@@ -26,18 +26,18 @@ if (isset($_SESSION["user_id"])) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Custodian Dashboard</title>
     <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
-    <link rel="stylesheet" href="../public/styles/custodian_dashboard.css">
+    <link rel="stylesheet" href="../../public/styles/custodian_dashboard.css">
 </head>
 
 <body>
     <!--START OF SIDEBAR-->
     <section id="sidebar">
         <a href="#" alt="Rentify Logo" class="logo-img">
-            <img src='../public/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
+            <img src='../../public/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
         </a>
         <ul class="side-menu top">
             <li class="active">
-                <a href="#">
+                <a href="../custodian_dashboard.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
@@ -106,12 +106,14 @@ if (isset($_SESSION["user_id"])) {
         </nav>
         <!-- DASHBOARD GREETING-->
         <div class="content-box">
-            <h1>Hello <?= htmlspecialchars($user["name"]) ?></h1>
+            <h1>Hello
+                <?= htmlspecialchars($user["name"]) ?>
+            </h1>
             <p></p>
         </div>
-    <!--END OF CONTENT-->
+        <!--END OF CONTENT-->
 
 </body>
-<script src="../public/scripts/script.js"></script>
+<script src="../../public/scripts/script.js"></script>
 
 </html>

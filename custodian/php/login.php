@@ -1,39 +1,37 @@
 <?php
+session_start();
 
 $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    
+    $mysqli = require __DIR__ . "\database.php";
 
-    $mysqli = require __DIR__ . "/database.php";
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     $sql = sprintf("SELECT * FROM custodian
                     WHERE email = '%s'",
-        $mysqli->real_escape_string($_POST["email"]));
+        $mysqli->real_escape_string($email));
 
     $result = $mysqli->query($sql);
 
     $user = $result->fetch_assoc();
 
-    if ($user) {
+    if ($user && password_verify($password, $user["password_hash"])) {
 
-        if (password_verify($_POST["password"], $user["password_hash"])) {
+        session_regenerate_id();
 
-            session_start();
+        $_SESSION["user_id"] = $user["id"];
 
-            session_regenerate_id();
-
-            $_SESSION["user_id"] = $user["id"];
-
-            header("Location: ../scripts/custodian_dashboard.php");
-            exit;
-        }
+        header("Location: ../php/pages/custodian_dashboard.php");
+        exit;
     }
 
     $is_invalid = true;
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

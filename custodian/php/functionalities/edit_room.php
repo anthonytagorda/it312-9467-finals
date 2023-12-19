@@ -14,7 +14,7 @@
     <h1>Edit Room</h1>
 
     <?php
-    include 'room_db.php';
+    include 'room.php';
 
     // Check if the room ID is provided in the URL
     if (isset($_GET['id'])) {

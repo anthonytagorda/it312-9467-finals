@@ -26,7 +26,9 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `credentials`
 --
-
+DROP DATABASE IF EXISTS rentify;
+CREATE database rentify;
+USE rentify;
 CREATE TABLE `credentials` (
   `school_id` int(7) NOT NULL,
   `password` varchar(255) NOT NULL

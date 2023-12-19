@@ -8,36 +8,36 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>Rooms</title>
   <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
-  <link rel="stylesheet" href="../public/styles/custodian_dashboard.css">
+  <link rel="stylesheet" href="../../public/styles/custodian_dashboard.css">
 </head>
 
 <body>
   <!--START OF SIDEBAR-->
   <section id="sidebar">
     <a href="#" alt="Rentify Logo" class="logo-img">
-      <img src='../public/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
+      <img src='../../public/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
     </a>
     <ul class="side-menu top">
       <li>
-        <a href="../scripts/custodian_dashboard.php">
+        <a href="../php/pages/custodian_dashboard.php">
           <i class='bx bxs-dashboard'></i>
           <span class="text">Dashboard</span>
         </a>
       </li>
       <li>
-        <a href="../scripts/room.php">
+        <a href="../pages/room.php">
           <i class='bx bxs-door-open'></i>
           <span class="text">Rooms</span>
         </a>
       </li>
       <li class="active">
-        <a href="../scripts/equipment.php">
+        <a href="../pages/equipment.php">
           <i class='bx bxs-cabinet'></i>
           <span class="text">Equipments</span>
         </a>
       </li>
       <li>
-        <a href="../scripts/transaction_history.php">
+        <a href="../pages/transaction_history.php">
           <i class='bx bx-clipboard'></i>
           <span class="text">Transaction History</span>
         </a>
@@ -56,7 +56,7 @@
           </a>
         </li>
         <li>
-          <a href="../pages/custodian_login.html" class="logout">
+          <a href="../login.php" class="logout">
             <i class='bx bx-log-out'></i>
             <span class="text">Logout</span>
           </a>
@@ -93,7 +93,7 @@
     </nav>
      <!--EQUIPMENTS LIST-->
   <?php
-  include 'equipment_db.php'; // Include your equipment database connection
+  include '../db.php'; // Include your equipment database connection
   
   // Check for search query
   $search = isset($_GET['search']) ? '%' . $mysqli->real_escape_string($_GET['search']) . '%' : '';
@@ -150,9 +150,9 @@
   <!--END OF CONTENT-->
 
   <!-- "Add Equipments" Button -->
-  <button id="add-equipment-button" onclick="location.href='../scripts/add_equipment.php'">Add Equipment</button>
+  <button id="add-equipment-button" onclick="location.href='../functionalities/add_equipment.php'">Add Equipment</button>
   </div>
 </body>
-<script src="../public/scripts/script.js"></script>
+<script src="../../public/scripts/script.js"></script>
 
 </html>

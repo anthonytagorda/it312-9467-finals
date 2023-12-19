@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'room_db.php';
+    include 'room.php';
 
     // Retrieve data from the form
     $roomId = $_POST['room_id']; // Adjusted to use 'room_id' as the input name
