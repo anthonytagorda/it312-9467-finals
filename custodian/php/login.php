@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Custodian Login</title>
     <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
     <link rel="stylesheet" href="../public/styles/custodian_login.css">
 </head>
@@ -61,9 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <form method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
-                    <label>Username</label>
-                    <input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "") ?>"
-                        placeholder="Username" required>
+                    <label>Custodian ID</label>
+                    <input type="number" name="custodian_id" id="custodian_id" value="<?= htmlspecialchars($_POST["custodian_id"] ?? "") ?>"
+                        placeholder="Custodian ID" required>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
