@@ -6,25 +6,35 @@
 -- Generation Time: Dec 19, 2023 at 03:42 AM
 -- Server version: 5.7.39
 -- PHP Version: 7.4.33
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `rentify`
 --
-
--- --------------------------------------------------------
-
+CREATE DATABASE IF NOT EXISTS rentify;
+DROP DATABASE IF EXISTS rentify;
+USE rentify;
+----------------------------------------------------------
 --
--- Table structure for table `credentials`
+-- Table structure for table `admin_credentials`
+--
+
+----------------------------------------------------------
+--
+-- Table structure for table `custodian_credentials`
+--
+CREATE TABLE custodian_credentials (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `custodian_id` INT(7) NOT NULL UNIQUE,
+    `custodian_name` VARCHAR(255) NOT NULL,
+    `password_hash` VARCHAR(255) NOT NULL, 
+    `date_created` DATETIME NOT NULL,
+    `user_category` VARCHAR(255),  -- admin | custodian | user
+    `reset_token` VARCHAR(512), 
+    `reset_token_expiration` DATETIME
+);
+
+----------------------------------------------------------
+--
+-- Table structure for table `user_credentials`
 --
 DROP DATABASE IF EXISTS rentify;
 CREATE database rentify;
@@ -32,6 +42,7 @@ USE rentify;
 CREATE TABLE `credentials` (
   `school_id` int(7) NOT NULL,
   `password` varchar(255) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -42,7 +53,6 @@ INSERT INTO `credentials` (`school_id`, `password`) VALUES
 (2222075, 'admin123');
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `equipment`
 --
@@ -63,7 +73,6 @@ INSERT INTO `equipment` (`id`, `equipment_name`, `quantity`, `image_path`) VALUE
 (20, 'Basketball', 1, 'uploads/dada.jpg');
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `reservations`
 --
