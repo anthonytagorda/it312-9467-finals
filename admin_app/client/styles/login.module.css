@@ -1,0 +1,101 @@
+.main_login_content{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    background-image: url('../public/backgrounds/rty_ad_login_back.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.main_login_graphic_container{
+    margin: 7% auto 0 auto;
+    padding: 0;
+}
+
+.main_login_graphic_container img{
+    display: block;
+}
+
+.main_login_form_container{
+    margin: 40px auto 0 auto;
+    padding: 45px 50px;
+    background-color: #FCF7F8;
+    width: 400px;
+    height: 300px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.main_login_form_head{
+    font-weight: 600;
+    text-align: center;
+}
+
+.login_form{
+    margin: 20px auto;
+    padding: 0;
+}
+
+.login_form_inpgroup{
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+.login_form_label{
+    margin: 3px 0;
+    padding: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.login_form_inpfield{
+    margin: 0;
+    padding: 5px 10px;
+    width: 100%;
+    outline: none;
+    border: #333533 solid 1px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.login_form_inpfield:focus{
+    border: #F5CB5C solid 1px;
+}
+
+.login_form_submitgroup{
+
+}
+
+.login_form_submitbtn{
+    margin: 10px auto 0 auto;
+    padding: 7px 10px;
+    width: 100%;
+    background-color: #F5CB5C;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.login_form_submitbtn:hover{
+    background-color: #d3ab3e;
+}

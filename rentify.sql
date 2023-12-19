@@ -1,59 +1,97 @@
-CREATE DATABASE IF NOT EXISTS `rentify`;
-USE `rentify`;
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Dec 19, 2023 at 03:42 AM
+-- Server version: 5.7.39
+-- PHP Version: 7.4.33
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `rentify`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `credentials`
-DROP TABLE IF EXISTS `credentials`;
-CREATE TABLE IF NOT EXISTS `credentials` (
+--
+
+CREATE TABLE `credentials` (
   `school_id` int(7) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`school_id`)
-);
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Data for table `credentials`
-INSERT INTO `credentials` (`school_id`, `password`) VALUES 
-('2222075', 'admin123');
+--
+-- Dumping data for table `credentials`
+--
 
+INSERT INTO `credentials` (`school_id`, `password`) VALUES
+(2222075, 'admin123');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `equipment`
-DROP TABLE IF EXISTS `equipment`;
-CREATE TABLE IF NOT EXISTS `equipment` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `equipment_name` varchar(255) NOT NULL,
-  `quantity` int NOT NULL,
-  `image_path` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-)  ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+--
 
--- Data for table `equipment`
+CREATE TABLE `equipment` (
+  `id` int(11) NOT NULL,
+  `equipment_name` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `equipment`
+--
+
 INSERT INTO `equipment` (`id`, `equipment_name`, `quantity`, `image_path`) VALUES
 (21, 'Volleyball', 2, 'uploads/image.jpg'),
 (20, 'Basketball', 1, 'uploads/dada.jpg');
 
--- Table structure for table `reservations`
-DROP TABLE IF EXISTS `reservations`;
-CREATE TABLE IF NOT EXISTS `reservations` (
-  `reservation_id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int DEFAULT NULL,
-  `room_id` int DEFAULT NULL,
-  `equipment_id` int DEFAULT NULL,
-  `reservation_date` date DEFAULT NULL,
-  PRIMARY KEY (`reservation_id`),
-  KEY `user_id` (`user_id`),
-  KEY `room_id` (`room_id`),
-  KEY `equipment_id` (`equipment_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `reservations`
+--
+
+CREATE TABLE `reservations` (
+  `reservation_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `equipment_id` int(11) DEFAULT NULL,
+  `reservation_date` date DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rooms`
-DROP TABLE IF EXISTS `rooms`;
-CREATE TABLE IF NOT EXISTS `rooms` (
-  `id` int NOT NULL AUTO_INCREMENT,
+--
+
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
   `room_name` varchar(255) NOT NULL,
   `floor` varchar(255) NOT NULL,
-  `capacity` int NOT NULL,
-  `available` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `capacity` int(11) NOT NULL,
+  `available` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
+--
 -- Dumping data for table `rooms`
+--
+
 INSERT INTO `rooms` (`id`, `room_name`, `floor`, `capacity`, `available`) VALUES
 (1, 'Audio Visual Room (AVR)', '9th Floor', 249, 1),
 (2, 'Another Room', '10th Floor', 200, 0),
@@ -61,5 +99,93 @@ INSERT INTO `rooms` (`id`, `room_name`, `floor`, `capacity`, `available`) VALUES
 (4, 'D925', '9', 10, 1),
 (5, 'AVR', '9', 10, 1);
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `users`
+--
 
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `user_name` char(50) NOT NULL,
+  `user_password` varchar(16) NOT NULL,
+  `user_status` char(7) NOT NULL DEFAULT 'offline',
+  `user_category` char(9) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `user_status`, `user_category`) VALUES
+(1, 'admin', 'admin', 'offline', 'admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `credentials`
+--
+ALTER TABLE `credentials`
+  ADD PRIMARY KEY (`school_id`);
+
+--
+-- Indexes for table `equipment`
+--
+ALTER TABLE `equipment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reservations`
+--
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`reservation_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `room_id` (`room_id`),
+  ADD KEY `equipment_id` (`equipment_id`);
+
+--
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `equipment`
+--
+ALTER TABLE `equipment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

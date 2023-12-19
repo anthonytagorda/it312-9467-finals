@@ -1,0 +1,14 @@
+.header{
+    margin: 0;
+    padding: 0 3%;
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #333533;
+    position: sticky;
+}
+
+.header_logo_container{
+    margin: auto auto auto 0;
+}
+

@@ -1,0 +1,65 @@
+.main_dashboard_herobanner{
+    margin: 0 0 30px 0;
+    padding: 40px 30px 40px 60px;
+    background-image: url('../../public/backgrounds/hero_background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.main_dashboard_herobanner h1{
+
+}
+
+.main_dashboard_herobanner h3{
+    margin: 5px 0 40px 0;
+}
+
+.main_dashboard_stats_container{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_dashboard_stats_div{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #FCF7F8;
+    height: 100px;
+    width: 24%;
+    border: #CFDBD5 solid 1px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.main_dashboard_stats_graphic{
+    margin: auto 20px;
+    padding: 0;
+}
+
+.main_dashboard_stats_graphic img{
+    display: block;
+}
+
+.main_dashboard_stats_infodiv{
+    margin: auto 0;
+}
+
+.main_dashboard_stats_head{
+    margin: 0;
+    padding: 0;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
