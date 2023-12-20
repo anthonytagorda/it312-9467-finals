@@ -19,3 +19,16 @@ const sideBar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function () {
     sideBar.classList.toggle('hide');
 })
+
+// LOGOUT MODAL UI
+function openLogoutModal() {
+    document.getElementById('logoutModal').style.display = 'block';
+}
+
+function closeLogoutModal() {
+    document.getElementById('logoutModal').style.display = 'none';
+}
+
+function logout() {
+    window.location.href = "custodian_login.php";
+}

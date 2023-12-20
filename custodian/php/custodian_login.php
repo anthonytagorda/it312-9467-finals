@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custodian Login</title>
     <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
-    <link rel="stylesheet" href="../public/styles/custodian_login.css">
+    <link rel="stylesheet" href="public/styles/custodian_login.css">
 </head>
 
 <body>
@@ -71,12 +71,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="forgot">
-                    <a href="../pages/contact_admin.html">Forgot Password?</a>
+                    <a href="../php/pages/contact_admin.php">Forgot Password?</a>
                 </div>
                 <button type="submit" class="login-button">Login</button>
                 <div class="login-register">
                     <p> Don't have an account?
-                        <a href="../pages/contact_admin.html" class="register-link">Register</a>
+                        <a href="../php/pages/contact_admin.php" class="register-link">Register</a>
                     </p>
                 </div>
             </form>

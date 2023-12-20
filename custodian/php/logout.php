@@ -10,5 +10,5 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to the login page or another location
-header('Location: login.php');
+header('Location: custodian_login.php');
 exit();

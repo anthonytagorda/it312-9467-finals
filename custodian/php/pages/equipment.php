@@ -56,7 +56,7 @@
           </a>
         </li>
         <li>
-          <a href="../login.php" class="logout">
+          <a href="../custodian_login.php" class="logout">
             <i class='bx bx-log-out'></i>
             <span class="text">Logout</span>
           </a>

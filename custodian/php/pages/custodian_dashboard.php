@@ -25,7 +25,7 @@ if (isset($_SESSION["user_id"])) {
     <!--Box Icons [https://boxicons.com/usage]-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Custodian Dashboard</title>
-    <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
+    <link rel="icon" href='../../public/assets/images/r-icon.svg' type="image/svg">
     <link rel="stylesheet" href="../../public/styles/custodian_dashboard.css">
 </head>
 
@@ -43,38 +43,38 @@ if (isset($_SESSION["user_id"])) {
                 </a>
             </li>
             <li>
-                <a href="../scripts/room.php">
+                <a href="room.php">
                     <i class='bx bxs-door-open'></i>
                     <span class="text">Rooms</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="equipment.php">
                     <i class='bx bxs-cabinet'></i>
                     <span class="text">Equipments</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="transaction_history">
                     <i class='bx bx-clipboard'></i>
                     <span class="text">Transaction History</span>
                 </a>
             </li>
             <ul class="side-menu bottom">
                 <li>
-                    <a href="#" class="report">
+                    <a href="report.php" class="report">
                         <i class='bx bxs-shield-minus'></i>
                         <span class="text">Report</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="settings.php">
                         <i class='bx bxs-cog'></i>
                         <span class="text">Settings</span>
                     </a>
                 </li>
                 <li>
-                    <a href="login.php" class="logout">
+                    <a href="login.php" class="logout" onclick="openLogoutModal()">
                         <i class='bx bx-log-out'></i>
                         <span class="text">Logout</span>
                     </a>

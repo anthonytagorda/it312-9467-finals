@@ -10,10 +10,10 @@
 <body>
     <div class="wrapper">
         <div class="info-box">
-            <img src='../public/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
+            <img src='../public/assets/images/rentify-icon.png' alt="Rentify Logo" class="logo-img">
             <h2>Please contact your administrator</h2>
             <button class="return-button">
-                <a href="../scripts/login.php">Return to Login</a>
+                <a href="../custodian_login.php">Return to Login</a>
             </button>
         </div>
     </div>
