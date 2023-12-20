@@ -15,8 +15,8 @@ exports.login = async (req, res) => {
     }
 
     // 2) Check if user exists && password is correct
-    db.query('SELECT * FROM credentials WHERE school_id = ?', [school_id], async (error, results) => {
-        console.log('SQL Query:', db.format('SELECT * FROM credentials WHERE school_id = ?', [school_id]));
+    db.query('SELECT * FROM user_credentials WHERE school_id = ?', [school_id], async (error, results) => {
+        console.log('SQL Query:', db.format('SELECT * FROM user_credentials WHERE school_id = ?', [school_id]));
         console.log('Query Results:', results);
 
         // Check if results is defined and not empty
@@ -56,12 +56,11 @@ exports.isLoggedIn = async (req, res, next) => {
             console.log(decoded);
 
             // 2) Check if user still exists
-            db.start.query('SELECT * FROM credentials WHERE school_id = ? A', [decoded.id], (error, result) => {
+            db.start.query('SELECT * FROM user_credentials WHERE school_id = ? A', [decoded.id], (error, result) => {
                 console.log(result)
                 if(!result) {
                     return next();
                 }
-
                 // THERE IS A LOGGED IN USER
                 req.user = result[0];
                 // res.locals.user = result[0];
