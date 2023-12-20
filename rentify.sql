@@ -16,6 +16,10 @@ USE rentify;
 --
 -- Table structure for table `admin_credentials`
 --
+CREATE TABLE admin_credentials {
+  `admin_id` INT(7) NOT NULL UNIQUE,
+  `admin_password` VARCHAR(255) NOT NULL
+}
 
 ----------------------------------------------------------
 --
@@ -27,7 +31,6 @@ CREATE TABLE custodian_credentials (
     `custodian_name` VARCHAR(255) NOT NULL,
     `password_hash` VARCHAR(255) NOT NULL, 
     `date_created` DATETIME NOT NULL,
-    `user_category` VARCHAR(255),  -- admin | custodian | user
     `reset_token` VARCHAR(512), 
     `reset_token_expiration` DATETIME
 );
@@ -36,13 +39,9 @@ CREATE TABLE custodian_credentials (
 --
 -- Table structure for table `user_credentials`
 --
-DROP DATABASE IF EXISTS rentify;
-CREATE database rentify;
-USE rentify;
-CREATE TABLE `credentials` (
-  `school_id` int(7) NOT NULL,
-  `password` varchar(255) NOT NULL
-
+CREATE TABLE `user_credentials` (
+  `school_id` INT(7) NOT NULL,
+  `password` VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -113,9 +112,8 @@ INSERT INTO `rooms` (`id`, `room_name`, `floor`, `capacity`, `available`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `admin_credentials`
 --
-
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_name` char(50) NOT NULL,
