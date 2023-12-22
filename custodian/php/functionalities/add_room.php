@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Room</title>
-  <link rel="stylesheet" href="../styles/room.css" />
+  <link rel="stylesheet" href="../public/styles/room.css" />
 </head>
 
 <body>

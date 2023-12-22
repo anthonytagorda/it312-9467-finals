@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="../styles/edit_profile.css" /> <!-- Include your CSS file -->
+    <link rel="stylesheet" href="../public/styles/edit_profile.css" /> <!-- Include your CSS file -->
 </head>
 
 <body>
