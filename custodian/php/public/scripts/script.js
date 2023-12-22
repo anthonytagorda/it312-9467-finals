@@ -30,5 +30,5 @@ function closeLogoutModal() {
 }
 
 function logout() {
-    window.location.href = "custodian_login.php";
+    window.location.href = "custodian_logout.php";
 }

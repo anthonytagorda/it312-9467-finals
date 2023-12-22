@@ -6,7 +6,6 @@
   <meta charset="UTF-8" />
   <title>Add Equipment</title>
   <link rel="stylesheet" href="../styles/equipment.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
 <body>
@@ -14,7 +13,7 @@
     <h1>Add Equipment</h1>
 
     <form action="add_equipment_process.php" method="post" enctype="multipart/form-data">
-        <label for="equipment_name">Equipment Name:</label>
+        <label for="equip_name">Equipment Name:</label>
         <input type="text" name="equipment_name" id="equipment_name" required>
 
         <label for="quantity">Quantity:</label>

@@ -123,19 +123,19 @@ body {
 }
 
 #sidebar .side-menu.top li a:hover {
-  color: #F5CB5C;
+  color: var(--accent);
 }
 
 #sidebar .side-menu li a.report:hover {
-  color: #FF6058;
+  color: var(--error);
 }
 
 #sidebar .side-menu li.active a.report {
-  color: #FF6058;
+  color: var(--error);
 }
 
 #sidebar .side-menu li a.logout {
-  color: #FF6058;
+  color: var(--error);
 }
 
 #sidebar .side-menu li a .bx {
@@ -214,7 +214,6 @@ body {
   display: flex;
   align-items: center;
   height: 36px;
-
 }
 
 #content nav form .form-input input {
@@ -222,7 +221,7 @@ body {
   padding: 0 16px;
   height: 100%;
   border: none;
-  background: #F4F5FB;
+  background: var(--shadow);
   border-radius: 36px 0 0 36px;
   outline: none;
 }
@@ -278,15 +277,28 @@ body {
 /* END OF NAVBAR */
 
 /* ROOMS LIST */
-
-/*
 .notification {
   color: white;
   text-align: center;
   padding: 10px;
   margin-bottom: 15px;
 }
-*/
+
+.add-rooms-button {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.add-rooms-button .btn {
+  padding: 10px 20px;
+  background-color: var(--accent);
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
 
 .room-list {
   display: flex;
@@ -296,7 +308,7 @@ body {
 }
 
 .room {
-  border: 1px solid #ddd;
+  border: 1px solid --primary;
   padding: 15px;
   margin: 15px;
   text-align: center;
@@ -304,7 +316,7 @@ body {
 }
 
 .room h2 {
-  color: #333;
+  color: var(--secondary-black);
 }
 
 .room p {
@@ -317,50 +329,6 @@ body {
   margin-top: 10px;
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-.edit-room-btn {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #F5CB5C;
-  color: #000000;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.edit-room-btn:hover {
-  background-color: #F5CB5C;
-}
-
-#add-room-button {
-  position: fixed;
-  bottom: 55px;
-  right: 55px;
-  background-color: #F5CB5C;
-  color: #000000;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 /* EQUIPMENTS LIST */
 .equipment-list {
   display: flex;
@@ -371,29 +339,17 @@ button:hover {
   width: calc(33.33% - 20px);
   margin: 10px;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--primary);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-}
-
-/* Add media query for responsiveness */
-@media (max-width: 768px) {
-  #content {
-    margin-left: 0;
-  }
-
-  .equipment {
-    width: 100%;
-    border-width: 0.5px;
-  }
 }
 
 #add-equipment-button {
   position: fixed;
   bottom: 55px;
   right: 55px;
-  background-color: #F5CB5C;
+  background-color: var(--accent);
   color: #000000;
   padding: 10px 15px;
   border: none;
@@ -404,7 +360,7 @@ button:hover {
 
 /* DASHBOARD GREETING */
 .content-box {
-  background-color: #ffffff;
+  background-color: var(--shadow);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -419,5 +375,17 @@ button:hover {
 
 .content-box p {
   font-size: 16px;
-  color: #666;
+  color: var(--secondary-gray);
+}
+
+/* RESPONSiVENESS */
+@media (max-width: 768px) {
+  #content {
+    margin-left: 0;
+  }
+
+  .equipment {
+    width: 100%;
+    border-width: 0.5px;
+  }
 }
