@@ -25,15 +25,15 @@ if (isset($_SESSION["user_id"])) {
     <!--Box Icons [https://boxicons.com/usage]-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Custodian Dashboard</title>
-    <link rel="icon" href='../../public/assets/images/r-icon.svg' type="image/svg">
-    <link rel="stylesheet" href="../../public/styles/custodian_dashboard.css">
+    <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
+    <link rel="stylesheet" href="../public/styles/custodian_dashboard.css">
 </head>
 
 <body>
     <!--START OF SIDEBAR-->
     <section id="sidebar">
         <a href="#" alt="Rentify Logo" class="logo-img">
-            <img src='../../public/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
+            <img src='../public/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
         </a>
         <ul class="side-menu top">
             <li class="active">
