@@ -19,7 +19,7 @@
 
     <form action="add_equipment_process.php" method="post" enctype="multipart/form-data">
         <label for="equipment_name">Equipment Name:</label>
-        <input type="text" name="equipment_name" id="equipment_name" required>
+        <input type="text" placeholder="Ex. HDMI Cable" name="equipment_name" id="equipment_name" required>
 
         <label for="quantity">Quantity:</label>
         <input type="number" name="quantity" id="quantity" required>
