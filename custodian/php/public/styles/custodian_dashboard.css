@@ -329,35 +329,6 @@ body {
   margin-top: 10px;
 }
 
-/* EQUIPMENTS LIST */
-.equipment-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.equipment {
-  width: calc(33.33% - 20px);
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid var(--primary);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
-
-#add-equipment-button {
-  position: fixed;
-  bottom: 55px;
-  right: 55px;
-  background-color: var(--accent);
-  color: #000000;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 /* DASHBOARD GREETING */
 .content-box {
   background-color: var(--shadow);

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Box Icons [https://boxicons.com/usage]-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <title>Rooms</title>
+  <title>Equipments</title>
   <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
   <link rel="stylesheet" href="../public/styles/custodian_dashboard.css">
 </head>

@@ -75,7 +75,7 @@
     </nav>
 <!--ROOMS LIST-->
 <div class="rooms-container">
-  <button type="button" class="btn" onclick="window.location.href='../pages/room.php'">Retun</button>
+  <button type="button" class="btn" onclick="window.location.href='../pages/room.php'">Return</button>
     <form action="../functionalities/add_room_process.php" method="post" enctype="multipart/form-data">
         <label for="roomNo">Room Number:</label>
         <input type="text" name="roomNo" required>
@@ -101,3 +101,6 @@
         <button type="submit">Add Room</button>
     </form>
 </div>
+</body>
+
+</html>
