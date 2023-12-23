@@ -45,18 +45,6 @@
             </li>
             <ul class="side-menu bottom">
                 <li>
-                    <a href="#" class="report">
-                        <i class='bx bxs-shield-minus'></i>
-                        <span class="text">Report</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bxs-cog'></i>
-                        <span class="text">Settings</span>
-                    </a>
-                </li>
-                <li>
                     <a href="../custodian_login.php" class="logout">
                         <i class='bx bx-log-out'></i>
                         <span class="text">Logout</span>
@@ -82,12 +70,6 @@
                     </form>
                 </div>
             </form>
-            <!--Notification Feature-->
-            <a href="#" class="notification">
-                <i class='bx bxs-bell'></i>
-                <!--UPDATEABLE BY NUMBER OF REQUESTS/ORDERS-->
-                <span class="num">8</span>
-            </a>
             <!--Profile Feature-->
             <a href="#" class="profile">
                 <i class='bx bxs-user-circle'></i>

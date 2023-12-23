@@ -62,18 +62,6 @@ if (isset($_SESSION["user_id"])) {
             </li>
             <ul class="side-menu bottom">
                 <li>
-                    <a href="report.php" class="report">
-                        <i class='bx bxs-shield-minus'></i>
-                        <span class="text">Report</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="settings.php">
-                        <i class='bx bxs-cog'></i>
-                        <span class="text">Settings</span>
-                    </a>
-                </li>
-                <li>
                     <a href="#" class="logout" onclick="openLogoutModal()">
                         <i class='bx bx-log-out'></i>
                         <span class="text">Logout</span>
@@ -93,12 +81,6 @@ if (isset($_SESSION["user_id"])) {
                     <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
             </form>
-            <!--Notification Feature-->
-            <a href="#" class="notification"> 
-                <i class='bx bxs-bell'></i>
-                <!--UPDATEABLE BY NUMBER OF REQUESTS/ORDERS-->
-                <span class="num">8</span>
-            </a>
             <!--Profile Feature-->
             <a href="#" class="profile">
                 <i class='bx bxs-user-circle'></i>
