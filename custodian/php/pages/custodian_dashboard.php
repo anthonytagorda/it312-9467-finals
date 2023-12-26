@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION["user_id"])) {
 
-    $mysqli = require __DIR__ . "../database.php";
+    $mysqli = require __DIR__ . "../db.php";
 
     $sql = "SELECT * FROM custodian
             WHERE id = {$_SESSION["user_id"]}";
@@ -74,7 +74,6 @@ if (isset($_SESSION["user_id"])) {
     <section id="content">
         <nav>
             <i class='bx bx-menu-alt-left'></i>
-            <a href="#" class="nav-link">Categories</a>
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search for Room or Equipment">

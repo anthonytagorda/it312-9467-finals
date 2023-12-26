@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  include 'equipment_db.php'; // Include your database connection code
+  include '../db.php'; // Include your database connection code
 
   // Retrieve data from the form
   $equipmentId = $_POST['id'];
@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($mysqli->query($sql) === TRUE) {
     echo "Equipment updated successfully!";
-    echo '<br><br><a href="equipment.php">Go Back to Equipment List</a>';
+    echo '<br><br><a href="../pages/equipment.php">Go Back to Equipment List</a>';
   } else {
     echo "Error: " . $sql . "<br>" . $mysqli->error;
   }

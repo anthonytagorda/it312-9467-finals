@@ -54,25 +54,25 @@
   <!--END OF SIDEBAR-->
   <!--START OF CONTENT-->
   <section id="content">
-    <nav>
-      <i class='bx bx-menu-alt-left'></i>
-      <a href="#" class="nav-link">Categories</a>
-      <form action="#">
-        <div class="form-input">
-          <form action="room.php" method="GET" class="search-form">
-            <div class="form-input">
-              <input type="search" name="search" placeholder="Search for Room or Equipment"
-                value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-              <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
-            </div>
-          </form>
-        </div>
-      </form>
+  <nav>
+    <i class='bx bx-menu-alt-left'></i>
+    <form action="#">
+      <div class="form-input">
+        <form action="room.php" method="GET" class="search-form">
+          <div class="form-input">
+            <input type="search" name="search" placeholder="Search for Room or Equipment"
+              value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+          </div>
+        </form>
+      </div>
+    </form>
       <!--Profile Feature-->
       <a href="#" class="profile">
         <i class='bx bxs-user-circle'></i>
       </a>
     </nav>
+  </div>
 <!--ROOMS LIST-->
 <div class="add-rooms">
   <button type="button" class="btn" onclick="window.location.href='../functionalities/add_room.php'">Add Rooms</button>
@@ -113,7 +113,7 @@
         echo '<p>CAPACITY: ' . $row['capacity'] . '</p>';
         echo '<p>' . ($row['room_status'] ? 'Available' : 'Not Available') . '</p>';
         echo '<img src="' . $row['room_photo'] . '" alt="Room Photo" class="room-photo">';
-        echo '<a href="edit_room.php?id=' . $row['room_id'] . '" class="edit-room-btn">Edit Room</a>';
+        echo '<a href="../functionalities/edit_room.php?id=' . $row['room_id'] . '" class="edit-room-btn">Edit Room</a>';
         echo '</div>';
     }
   } else {

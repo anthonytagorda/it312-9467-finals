@@ -58,7 +58,6 @@
     <section id="content">
         <nav>
             <i class='bx bx-menu-alt-left'></i>
-            <a href="#" class="nav-link">Categories</a>
             <form action="#">
                 <div class="form-input">
                     <form action="equipment.php" method="GET" class="search-form">

@@ -56,7 +56,6 @@
   <section id="content">
     <nav>
       <i class='bx bx-menu-alt-left'></i>
-      <a href="#" class="nav-link">Categories</a>
       <form action="#">
         <div class="form-input">
           <form action="equipment.php" method="GET" class="search-form">
@@ -100,7 +99,7 @@
         echo '<p>Quantity: ' . $row['quantity'] . '</p>';
         echo '<p>Status: ' . ($row['equip_status'] ? 'Available' : 'Not Available') . '</p>';
         echo '<img src="' . $row['equip_photo'] . '" alt="Equipment Photo" class="equipment-photo">';
-        // Add more details or actions as needed
+        echo '<a href="../functionalities/edit_equipment.php?id=' . $row['id'] . '" class="edit-room-btn">Edit Equipment</a>';
         echo '</div>';
       }
     } else {
@@ -118,7 +117,7 @@
         echo '<p>Quantity: ' . $row['quantity'] . '</p>';
         echo '<p>Status: ' . ($row['equip_status'] ? 'Available' : 'Not Available') . '</p>';
         echo '<img src="' . $row['equip_photo'] . '" alt="Equipment Photo" class="equipment-photo">';
-        // Add more details or actions as needed
+        echo '<a href="../functionalities/edit_equipment.php?id=' . $row['id'] . '" class="edit-room-btn">Edit Equipment</a>';
         echo '</div>';
       }
     } else {

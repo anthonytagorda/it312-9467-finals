@@ -14,7 +14,7 @@
     <h1>Edit Equipment</h1>
 
     <?php
-    include 'equipment_db.php'; // Include your database connection code
+    include '../db.php'; // Include your database connection code
 
     // Check if the equipment ID is provided in the URL
     if (isset($_GET['id'])) {
@@ -36,6 +36,19 @@
 
           <label for="quantity">Quantity:</label>
           <input type="number" id="quantity" name="quantity" value="<?php echo $row['quantity']; ?>" required>
+
+          <label for="equip_type">Equipment Type:</label>
+          <input type="text" id="equip_type" name="equip_type" value="<?php echo $row['equip_type']; ?>" required>
+
+          <label for="equip_status">Equipment Status:</label>
+          <select id="equip_status" name="equip_status" required>
+            <option value="available" <?php echo ($row['equip_status'] === 'available') ? 'selected' : ''; ?>>Available</option>
+            <option value="not_available" <?php echo ($row['equip_status'] === 'not_available') ? 'selected' : ''; ?>>Not Available</option>
+          </select>
+
+          <label for="equip_photo">Equipment Photo:</label>
+          <input type="file" id="equip_photo" name="equip_photo" accept="image/*">
+          <p class="note">Note: Select a new photo only if you want to update the existing one.</p>
 
           <button type="submit">Update Equipment</button>
         </form>

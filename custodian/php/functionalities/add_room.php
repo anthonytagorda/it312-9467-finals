@@ -8,6 +8,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>Rooms</title>
   <link rel="icon" href='../public/assets/images/r-icon.svg' type="image/svg">
+  <link rel="stylesheet" href='../public/styles/room.css'>
   <link rel="stylesheet" href='../public/styles/custodian_dashboard.css'>
 </head>
 
@@ -74,32 +75,31 @@
       </a>
     </nav>
 <!--ROOMS LIST-->
-<div class="rooms-container">
-  <button type="button" class="btn" onclick="window.location.href='../pages/room.php'">Return</button>
-    <form action="../functionalities/add_room_process.php" method="post" enctype="multipart/form-data">
-        <label for="roomNo">Room Number:</label>
-        <input type="text" name="roomNo" required>
+<div id="room-form" class="container">
+  <form action="../functionalities/add_room_process.php" method="post" enctype="multipart/form-data">
+    <label for="room_no">Room Number:</label>
+      <input type="text" placeholder="Ex. D321" name="room_no" id="room_no" required>
 
-        <label for="roomType">Room Type:</label>
-        <input type="text" name="roomType">
+      <label for="room_location">Room Location:</label>
+        <input type="text" name="room_location" id="room_location" required>
 
-        <label for="roomLocation">Room Location:</label>
-        <input type="text" name="roomLocation">
+        <label for="room_type">Room Type:</label>
+        <input type="text" placeholder="Ex. Classroom" name="room_type" id="room_type" required>
 
         <label for="capacity">Capacity:</label>
-        <input type="number" name="capacity" required>
+        <input type="number" name="capacity" id="capacity" required>
 
-        <label for="roomStatus">Room Status:</label>
-        <select name="roomStatus" required>
+        <label for="room_status">Room Status:</label>
+        <select name="room_status" id="room_status" required>
             <option value="1">Available</option>
             <option value="0">Not Available</option>
         </select>
 
-        <label for="roomPhoto">Room Photo:</label>
-        <input type="file" name="roomPhoto">
+        <label for="room_photo">Room Photo:</label>
+        <input type="file" name="room_photo" id="room_photo" required>
 
         <button type="submit">Add Room</button>
-    </form>
+  </form>
 </div>
 </body>
 

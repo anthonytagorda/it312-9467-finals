@@ -26,13 +26,13 @@
           <span class="text">Dashboard</span>
         </a>
       </li>
-      <li class="active">
+      <li>
         <a href="../pages/room.php">
           <i class='bx bxs-door-open'></i>
           <span class="text">Rooms</span>
         </a>
       </li>
-      <li>
+      <li class="active">
         <a href="../pages/equipment.php">
           <i class='bx bxs-cabinet'></i>
           <span class="text">Equipments</span>

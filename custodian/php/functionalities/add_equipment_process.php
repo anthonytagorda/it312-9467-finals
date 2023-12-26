@@ -1,17 +1,26 @@
 <!-- add_equipment_process.php -->
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  include 'rentify.php'; // Include your database connection code
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "rentify";
+
+// Create connection
+$mysqli = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
 
   // Retrieve data from the form
   $equipName = $_POST['equipment_name'];
   $quantity = $_POST['quantity'];
   $equipType = $_POST['equip_type'];
-  $equipDescription = $_POST['equip_description'];
   $equipStatus = $_POST['equip_status'];
 
   // File upload handling
-  $targetDir = "uploads/";
+  $targetDir = "../public/assets/uploads/";
   $targetFile = $targetDir . basename($_FILES["equip_photo"]["name"]);
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -60,17 +69,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   // Insert data into the database
-  $sql = "INSERT INTO equipment (equipment_name, quantity, equip_type, equip_description, equip_status, equip_photo) 
-          VALUES ('$equipName', '$quantity', '$equipType', '$equipDescription', '$equipStatus', '$targetFile')";
+  $sql = "INSERT INTO equipment (equipment_name, quantity, equip_type, equip_status, equip_photo) 
+          VALUES ('$equipName', '$quantity', '$equipType', '$equipStatus', '$targetFile')";
 
   if ($mysqli->query($sql) === TRUE) {
     echo "Equipment added successfully!";
-    echo '<br><br><a href="equipment.php">Go Back to Equipment List</a>';
+    echo '<br><br><a href="../pages/equipment.php">Go Back to Equipment List</a>';
   } else {
     echo "Error: " . $sql . "<br>" . $mysqli->error;
   }
 
   // Close the database connection
   $mysqli->close();
-}
 ?>
