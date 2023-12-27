@@ -33,7 +33,7 @@ INSERT INTO `user_credentials` (`school_id`, `password`) VALUES
 (2222075, 'admin123');
 
 -- Table for equipment
-CREATE TABLE `equipment` (
+CREATE TABLE `equipments` (
   `equip_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `equip_name` VARCHAR(255) NOT NULL,
   `equip_no` INT NOT NULL,

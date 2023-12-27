@@ -63,7 +63,6 @@ exports.isLoggedIn = async (req, res, next) => {
                 }
                 // THERE IS A LOGGED IN USER
                 req.user = result[0];
-                // res.locals.user = result[0];
                 console.log("next")
             });
         } catch (err) {
@@ -76,7 +75,11 @@ exports.isLoggedIn = async (req, res, next) => {
 
 exports.dashboard = (req, res) => {
     // Handle logic for displaying the user dashboard
-    res.render('user_dashboard', { user: req.user });
+    let currentDate = new Date();
+    res.render('user_dashboard', { 
+        user: req.user,
+        currentDate: currentDate
+    });
 };
 
 exports.logout = (req, res) => {

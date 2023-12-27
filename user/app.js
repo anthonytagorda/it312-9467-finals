@@ -1,12 +1,24 @@
 // app.js
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const app = express();
-const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
+const router = express.Router();
 
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
+const Rooms = require('./model/rooms');
+const Equipments = require('./model/equipments');
+
+const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
+
 const db = require('./model/db');
+const dbops = require('./model/dbops');
+
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: false }));
@@ -14,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 app.set('view engine', 'hbs');
 
@@ -24,20 +37,6 @@ app.use(express.static(publicDir));
 // Define Routes (refer to router/pages.js)
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
-
-// Fetch number of Reservations
-app.get('/reservationCount', (req, res) => {
-    const query = 'SELECT COUNT(*) as count FROM reservations';
-    db.query(query, (err, results) => {
-        if (err) {
-            res.status(500).send('Error fetching data.');
-            return;
-        }
-        const count = results[0].count;
-        res.json({ count });
-    });
-});
-
 
 const port = process.env.PORT;
 
