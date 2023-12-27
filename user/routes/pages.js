@@ -29,11 +29,11 @@ router.get('/dashboard', (req, res) => {
 
 router.get('/rooms', async (req, res) => {
   try {
-    const rooms = await dbops.getRooms();  // Fetch rooms using the getRooms function
-    res.render('rooms', { rooms: rooms });  // Render the rooms view with the fetched rooms data
+    res.render('rooms', { 
+      
+    });  // Render the rooms view with the fetched rooms data
   } catch (error) {
-    console.error('Error fetching rooms:', error);
-    res.status(500).send('Internal Server Error');
+    
   }
 });
 
