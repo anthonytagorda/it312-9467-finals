@@ -1,6 +1,7 @@
 // controllers/auth.js
 const jwt = require('jsonwebtoken');
 const db = require('../model/db');
+const dbops = require('../model/dbops');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
@@ -73,8 +74,8 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 };
 
-exports.dashboard = (req, res) => {
-    // Handle logic for displaying the user dashboard
+exports.user_dashboard = (req, res) => {
+    // Handle logic for displaying the dashboard
     let currentDate = new Date();
     res.render('user_dashboard', { 
         user: req.user,
@@ -82,10 +83,47 @@ exports.dashboard = (req, res) => {
     });
 };
 
+exports.dashboard = async (req, res) => {
+    try {
+        // Fetch recent transactions
+        const transactions = await db.query("SELECT transaction_num, user_id, custodian_id, room_id, equip_id, transaction_date, transaction_status FROM transactions"); 
+        
+        // Check if transactions are empty or not
+        if (transactions && transactions.length > 0) {
+            // Render the dashboard view with the transactions data
+            res.render('dashboard', { 
+                transactions: transactions
+            });
+        } else {
+            // If no transactions found, render the dashboard view with an empty array
+            res.render('dashboard', { 
+                transactions: []
+            });
+        }
+    } catch (error) {
+        console.error('Error fetching transactions:', error.message);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+exports.rooms = (req, res) => {
+    //  Handle logic for displaying the rooms
+    try {
+        const rooms = dbops.getRooms();  // Fetch rooms using the getRooms function
+        res.render('rooms', { 
+          rooms: rooms 
+        });  // Render the rooms view with the fetched rooms data
+      } catch (error) {
+        res.send('Error fetching rooms:', error);
+        res.status(500).send('Internal Server Error');
+      }
+}
+
+
 exports.logout = (req, res) => {
     res.cookie('jwt', 'loggedout', {
         maxAge: 10 * 1000, // Set the expiration time to 10 seconds
         httpOnly: true
     });
-    res.status(200).redirect("/");
+    res.status(200).redirect("/user_login");
 };

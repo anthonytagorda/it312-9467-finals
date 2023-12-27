@@ -71,6 +71,8 @@ CREATE TABLE `transactions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+
+
 ALTER TABLE `transactions`
 ADD CONSTRAINT `chk_room_or_equip`
 CHECK ((`room_id` IS NOT NULL AND `equip_id` IS NULL) OR 
