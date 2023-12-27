@@ -49,5 +49,6 @@ button[type="submit"]:hover {
 /* Styling for the file input */
 input[type="file"] {
     margin-top: 6px;
+    margin-bottom: 20px;
     font-size: 18px;
 }
