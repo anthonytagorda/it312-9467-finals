@@ -81,7 +81,7 @@
       <input type="text" placeholder="Ex. D321" name="room_no" id="room_no" required>
 
       <label for="room_location">Room Location:</label>
-        <input type="text" name="room_location" id="room_location" required>
+        <input type="text" placeholder="Third Floor" name="room_location" id="room_location" required>
 
         <label for="room_type">Room Type:</label>
         <input type="text" placeholder="Ex. Classroom" name="room_type" id="room_type" required>
