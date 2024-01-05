@@ -51,6 +51,15 @@ function logout() {
     window.location.href = "/auth/logout";
 }
 
+// DATE FORMAT
+function formatDate(dateString) {
+    const [datePart, timePart] = dateString.split(' ');
+    const [year, month, day] = datePart.split('-');
+    const [hour, minute, second] = timePart.split(':');
+
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+}
+
 // RESPONSIVENESS
 const searchButton = document.querySelector('#content nav form .form-input button');
 const searchForm = document.querySelector('#content nav form');

@@ -18,8 +18,8 @@
             <img src='/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
         </a>
         <ul class="side-menu top">
-            <li class="active">
-                <a href="/dashboard">
+            <li>
+                <a href="/user_dashboard">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
@@ -30,16 +30,10 @@
                     <span class="text">Rooms</span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="/equipments">
                     <i class='bx bxs-cabinet'></i>
                     <span class="text">Equipments</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-clipboard'></i>
-                    <span class="text">Transaction History</span>
                 </a>
             </li>
             <ul class="side-menu bottom">
@@ -47,12 +41,6 @@
                     <a href="#" class="report">
                         <i class='bx bxs-shield-minus'></i>
                         <span class="text">Report</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class='bx bxs-cog'></i>
-                        <span class="text">Settings</span>
                     </a>
                 </li>
                 <li>
@@ -94,6 +82,43 @@
                 <i class='bx bxs-user-circle'></i>
             </a>
         </nav>
+        <main id="equipment-content">
+            <div class="head-title">
+                <div class="left">
+                    <h1>Equipments</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="user_dashboard">Home</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li>
+                            <a class="active" href="rooms">Equipments</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="equipment-data">
+                <div class="order">
+                    <div class="head">
+                        <h3>Equipment Details</h3>
+                        <i class='bx bx-search'></i>
+                        <i class='bx bx-filter'></i>
+                    </div>
+                    <div class="equipment-container">
+                        {{#each equipments}}
+                        <div class="equipment-card">
+                            <img src="uploads/equipments/equip1.jpg" alt="Equip Photo">
+                            <h3>Equipment Name: {{ equip_name }}</h3> 
+                            <p>Equipment Number: {{ equip_no }}</p>
+                            <p>Type: {{ equip_type }}</p>
+                            <p>Status: {{ equip_status }}</p>
+                            <p>Created At: {{ created_at }}</p>
+                            <p>Updated At: {{ updated_at }}</p>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
     </section>
     <!--END OF CONTENT-->
 </body>

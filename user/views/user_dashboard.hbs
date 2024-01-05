@@ -19,7 +19,7 @@
         </a>
         <ul class="side-menu top">
             <li class="active">
-                <a href="/dashboard">
+                <a href="/user_dashboard">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
@@ -36,23 +36,11 @@
                     <span class="text">Equipments</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-clipboard'></i>
-                    <span class="text">Transaction History</span>
-                </a>
-            </li>
             <ul class="side-menu bottom">
                 <li>
                     <a href="#" class="report">
                         <i class='bx bxs-shield-minus'></i>
                         <span class="text">Report</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class='bx bxs-cog'></i>
-                        <span class="text">Settings</span>
                     </a>
                 </li>
                 <li>
@@ -94,8 +82,83 @@
                 <i class='bx bxs-user-circle'></i>
             </a>
         </nav>
-        <main>
-            <h1>Today is: {{currentDate}}</h1>
+        <main id="dashboard-content">
+            <div class="head-title">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="user_dashboard">Home</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li>
+                            <a class="active" href="user_dashboard">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-calendar-check'></i>
+                    <!--UPDATE: BY NUMBER OF ORDERS-->
+                    <span class="text">
+                        <h3>1</h3>
+                        <p>New Orders</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-door-open'></i>
+                    <span class="text">
+                        <!--UPDATE: BY NUMBER OF ROOMS AVAILABLE-->
+                        <h3>2</h3>
+                        <p>Rooms Available</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-cabinet'></i>
+                    <span class="text">
+                        <!--UPDATE: BY NUMBER OF EQUIPMENT AVAILABLE-->
+                        <h3>2</h3>
+                        <p>Equipments Available</p>
+                    </span>
+                </li>
+            </ul>
+            <div class="transactions-data">
+                <div class="order">
+                    <div class="head">
+                        <h3>Recent Transactions</h3>
+                        <i class='bx bx-search'></i>
+                        <i class='bx bx-filter'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaction Number</th>
+                                <th>User ID</th>
+                                <th>Custodian ID</th>
+                                <th>Room ID</th>
+                                <th>Equipment ID</th>
+                                <th>Transaction Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each transactions}}
+                            <tr>
+                                <td>{{ transaction_num }}</td>
+                                <td>{{ user_id }}</td>
+                                <td>{{ custodian_id }}</td>
+                                <td>{{ room_id }}</td>
+                                <td>{{ equip_id }}</td>
+                                <td>{{ transaction_date }}</td>
+                                <td class="status {{ transaction_status }}">{{ transaction_status }}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
         </main>
     </section>
     <!--END OF CONTENT-->

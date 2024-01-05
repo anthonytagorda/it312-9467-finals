@@ -1,7 +1,6 @@
 // controllers/auth.js
 const jwt = require('jsonwebtoken');
 const db = require('../model/db');
-const dbops = require('../model/dbops');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
@@ -10,7 +9,7 @@ exports.login = async (req, res) => {
 
     // 1) Check if the school_id and password exist
     if (!school_id || !password) {
-        return res.status(400).render("login", {
+        return res.status(400).render("user_login", {
             message: 'Please provide School ID and Password'
         });
     }
@@ -59,7 +58,7 @@ exports.isLoggedIn = async (req, res, next) => {
             // 2) Check if user still exists
             db.start.query('SELECT * FROM user_credentials WHERE school_id = ? A', [decoded.id], (error, result) => {
                 console.log(result)
-                if(!result) {
+                if (!result) {
                     return next();
                 }
                 // THERE IS A LOGGED IN USER
@@ -74,32 +73,25 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 };
 
-exports.user_dashboard = (req, res) => {
-    // Handle logic for displaying the dashboard
-    let currentDate = new Date();
-    res.render('user_dashboard', { 
-        user: req.user,
-        currentDate: currentDate
-    });
+exports.contact_admin = (req, res) => {
+    // Handle logic for displaying the contact admin page
+    res.render('contact_admin');
 };
 
-exports.dashboard = async (req, res) => {
+exports.user_dashboard = (req, res) => {
     try {
-        // Fetch recent transactions
-        const transactions = await db.query("SELECT transaction_num, user_id, custodian_id, room_id, equip_id, transaction_date, transaction_status FROM transactions"); 
-        
-        // Check if transactions are empty or not
-        if (transactions && transactions.length > 0) {
-            // Render the dashboard view with the transactions data
-            res.render('dashboard', { 
-                transactions: transactions
+        var query = "SELECT * FROM transactions";
+
+        db.query(query, (error, data) => {
+            if (error) {
+                console.error('Error executing query:', error);
+                return res.status(500).send('Internal Server Error');
+            }
+
+            res.render('user_dashboard', {
+                transactions: data
             });
-        } else {
-            // If no transactions found, render the dashboard view with an empty array
-            res.render('dashboard', { 
-                transactions: []
-            });
-        }
+        });
     } catch (error) {
         console.error('Error fetching transactions:', error.message);
         res.status(500).send('Internal Server Error');
@@ -107,16 +99,33 @@ exports.dashboard = async (req, res) => {
 }
 
 exports.rooms = (req, res) => {
-    //  Handle logic for displaying the rooms
-    try {
-        const rooms = dbops.getRooms();  // Fetch rooms using the getRooms function
-        res.render('rooms', { 
-          rooms: rooms 
-        });  // Render the rooms view with the fetched rooms data
-      } catch (error) {
-        res.send('Error fetching rooms:', error);
-        res.status(500).send('Internal Server Error');
-      }
+    var query = "SELECT * FROM rooms";
+
+    db.query(query, (error, data) => {
+        if (error) {
+            console.error('Error executing query:', error);
+            return res.status(500).send('Internal Server Error');
+        }
+
+        res.render('rooms', {
+            rooms: data
+        });
+    });
+}
+
+exports.equipments = (req, res) => {
+    var query = "SELECT * FROM equipments";
+
+    db.query(query, (error, data) => {
+        if (error) {
+            console.error('Error executing query:', error);
+            return res.status(500).send('Internal Server Error');
+        }
+
+        res.render('equipments', {
+            equipments: data
+        });
+    });
 }
 
 

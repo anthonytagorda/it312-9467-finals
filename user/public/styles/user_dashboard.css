@@ -5,10 +5,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-html {
-  overflow: hidden;
-}
-
 a {
   text-decoration: none;
 }
@@ -26,7 +22,25 @@ li {
   --tinge-green: #E8EDDF;
   --error: #FF6058;
   --approve: #65FF58;
+  --pending: #ffb000;
   --shadow: #ECEBEB;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
 }
 
 body {
@@ -161,7 +175,7 @@ body {
 }
 
 #sidebar.hide~#content {
-  width: calc(100% - 80px);
+  width: calc(100% - 85px);
   left: 80px;
 }
 
@@ -281,9 +295,9 @@ body {
 
 /* END OF NAVBAR */
 
-/* START OF MAIN */
+/* START OF MAIN DASHBOARD */
 #content main {
-  width: 100%;
+  max-width: 85%;
   padding: 36px 24px;
 }
 
@@ -352,7 +366,7 @@ body {
   align-items: center;
 }
 
-#content main .table-data {
+#content main .transactions-data {
   display: flex;
   flex-wrap: wrap;
   grid-gap: 24px;
@@ -362,14 +376,14 @@ body {
   overflow: auto;
 }
 
-#content main .table-data>div {
+#content main .transactions-data>div {
   border-radius: 20px;
   background: var(--primary);
   padding: 24px;
   overflow-x: auto;
 }
 
-#content main .table-data .order .head {
+#content main .transactions-data .order .head {
   display: flex;
   align-items: center;
   grid-gap: 16px;
@@ -377,39 +391,39 @@ body {
   min-width: 420px;
 }
 
-#content main .table-data .order .head h3 {
+#content main .transactions-data .order .head h3 {
   margin-right: auto;
   font-size: 24px;
   font-weight: 600;
 }
 
-#content main .table-data .head .bx {
+#content main .transactions-data .head .bx {
   cursor: pointer;
 }
 
-#content main .table-data .order {
+#content main .transactions-data .order {
   flex-grow: 1;
   flex-basis: 500px;
 }
 
-#content main .table-data .order table {
+#content main .transactions-data .order table {
   width: 100%;
   border-collapse: collapse;
   min-width: 420px;
 }
 
-#content main .table-data .order table th {
+#content main .transactions-data .order table th {
   padding-bottom: 12px;
   font-size: 13px;
   text-align: left;
   border-bottom: 1px solid var(--tinge-aqua);
 }
 
-#content main .table-data .order table td {
+#content main .transactions-data .order table td {
   padding: 16px 0;
 }
 
-#content main .table-data .order table tr td:first-child {
+#content main .transactions-data .order table tr td:first-child {
   display: flex;
   align-items: center;
   grid-gap: 12px;
@@ -422,36 +436,178 @@ body {
   font-weight: 600;
 }
 
-#content main .table-data .order table td i {
+#content main .transactions-data .order table td i {
   font-size: 24px;
   border-radius: 50%;
 }
 
-#content main .table-data .order table tbody tr:hover {
+#content main .transactions-data .order table tbody tr:hover {
   background: var(--shadow);
 }
 
-#content main .table-data .order table tr td .status {
-  font-size: 10px;
+#content main .transactions-data .order table tr td.status {
+  font-size: 15px;
   font-weight: 700;
   padding: 6px 16px;
-  color: var(--secondary-black);
-  border-radius: 20px;
+  border-radius: 0 10px 10px 0;
 }
 
-#content main .table-data .order table tr td .status.completed {
+#content main .transactions-data .order table tr td.status.completed {
   background-color: var(--approve);
 }
 
-#content main .table-data .order table tr td .status.process {
-  background-color: var(--accent);
+#content main .transactions-data .order table tr td.status.cancelled {
+  background-color: var(--tinge-aqua);
 }
 
-#content main .table-data .order table tr td .status.pending {
-  background-color: chocolate;
+#content main .transactions-data .order table tr td.status.pending {
+  background-color: var(--pending);
 }
 
-/* END OF MAIN */
+
+/* END OF MAIN DASHBOARD */
+
+/* START OF ROOM DASHBOARD */
+#content main .rooms-data {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 24px;
+  margin-top: 24px;
+  width: 100%;
+  color: var(--secondary-black);
+  overflow: auto;
+}
+
+#content main .rooms-data>div {
+  border-radius: 20px;
+  background: var(--primary);
+  padding: 24px;
+  overflow-x: auto;
+}
+
+#content main .rooms-data .order .head {
+  display: flex;
+  align-items: center;
+  grid-gap: 16px;
+  margin-bottom: 24px;
+  min-width: 420px;
+}
+
+#content main .rooms-data .order .head h3 {
+  margin-right: auto;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#content main .rooms-data .head .bx {
+  cursor: pointer;
+}
+
+#content main .rooms-data .order {
+  flex-grow: 1;
+  flex-basis: 500px;
+}
+
+.room-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.room-card {
+  flex: 0 0 calc(50% - 16px);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.room-card:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.room-card img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px 8px 0 0;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* END OF ROOM DASHBOARD */
+
+/* START OF EQUIPMENT DASHBOARD */
+#content main .equipment-data {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 24px;
+  margin-top: 24px;
+  width: 100%;
+  color: var(--secondary-black);
+  overflow: auto;
+}
+
+#content main .equipment-data>div {
+  border-radius: 20px;
+  background: var(--primary);
+  padding: 24px;
+  overflow-x: auto;
+}
+
+#content main .equipment-data .order .head {
+  display: flex;
+  align-items: center;
+  grid-gap: 16px;
+  margin-bottom: 24px;
+  min-width: 420px;
+}
+
+#content main .equipment-data .order .head h3 {
+  margin-right: auto;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#content main .equipment-data .head .bx {
+  cursor: pointer;
+}
+
+#content main .equipment-data .order {
+  flex-grow: 1;
+  flex-basis: 500px;
+}
+
+.equipment-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.equipment-card {
+  flex: 0 0 calc(50% - 16px);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-card:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.equipment-card img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px 8px 0 0;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* END OF EQUIPMENT DASHBOARD*/
 
 /* START OF LOGOUT MODAL */
 .modal {
@@ -504,7 +660,7 @@ body {
 
 .logout-button:hover {
   background: var(--error);
-  color: white;
+  color: var(--primary);
 }
 
 /* END OF LOGOUT MODAL */
@@ -532,7 +688,7 @@ body {
   }
 
   #sidebar.hide~#content {
-    width: calc(100% - 80px);
+    width: calc(100% - 85px);
     left: 80px;
   }
 }

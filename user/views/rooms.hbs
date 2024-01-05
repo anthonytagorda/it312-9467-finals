@@ -18,13 +18,13 @@
             <img src='/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
         </a>
         <ul class="side-menu top">
-            <li class="active">
-                <a href="/dashboard">
+            <li>
+                <a href="/user_dashboard">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="/rooms">
                     <i class='bx bxs-door-open'></i>
                     <span class="text">Rooms</span>
@@ -36,23 +36,11 @@
                     <span class="text">Equipments</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-clipboard'></i>
-                    <span class="text">Transaction History</span>
-                </a>
-            </li>
             <ul class="side-menu bottom">
                 <li>
                     <a href="#" class="report">
                         <i class='bx bxs-shield-minus'></i>
                         <span class="text">Report</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class='bx bxs-cog'></i>
-                        <span class="text">Settings</span>
                     </a>
                 </li>
                 <li>
@@ -94,23 +82,44 @@
                 <i class='bx bxs-user-circle'></i>
             </a>
         </nav>
-    </section>
-    <main id="room-content">
-        <div class="head-title">
-            <div class="left">
-                <h1>Rooms</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Rooms</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="user_dashboard">Home</a>
-                    </li>
-                </ul>
+        <main id="room-content">
+            <div class="head-title">
+                <div class="left">
+                    <h1>Rooms</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="user_dashboard">Home</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li>
+                            <a class="active" href="rooms">Rooms</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </main>
+            <div class="rooms-data">
+                <div class="order">
+                    <div class="head">
+                        <h3>Room Details</h3>
+                        <i class='bx bx-search'></i>
+                        <i class='bx bx-filter'></i>
+                    </div>
+                    <div class="room-container">
+                        {{#each rooms}}
+                        <div class="room-card">
+                            <img src="uploads/rooms/room1.jpg" alt="Room Photo">
+                            <h3>Room Number: {{ room_no }}</h3>
+                            <p>Location: {{ room_location }}</p>
+                            <p>Capacity: {{ room_capacity }}</p>
+                            <p>Status: {{ room_status }}</p>
+                            <p>Created At: {{ created_at }}</p>
+                            <p>Updated At: {{ updated_at }}</p>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+    </section>
     <!--END OF CONTENT-->
 </body>
 <script src="/scripts/script.js"></script>

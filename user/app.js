@@ -3,19 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-const router = express.Router();
 
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const Rooms = require('./model/rooms');
-const Equipments = require('./model/equipments');
-
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
-
-const db = require('./model/db');
-const dbops = require('./model/dbops');
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
