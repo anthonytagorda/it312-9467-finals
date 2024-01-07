@@ -7,7 +7,7 @@
     <!--Box Icons [https://boxicons.com/usage]-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Dashboard</title>
-    <link rel="icon" href='/assets/images/r-icon.svg' type="image/svg">
+    <link rel="icon" href='/icons/r-icon.svg' type="image/svg">
     <link rel="stylesheet" href="/styles/user_dashboard.css">
 </head>
 
@@ -15,7 +15,7 @@
     <!--START OF SIDEBAR-->
     <section id="sidebar">
         <a href="/user_dashboard" alt="Rentify Logo" class="logo-img">
-            <img src='/assets/images/r-icon.svg' alt="Rentify Logo" class="logo-img">
+            <img src='/icons/r-icon.svg' alt="Rentify Logo" class="logo-img">
         </a>
         <ul class="side-menu top">
             <li>
@@ -38,12 +38,6 @@
             </li>
             <ul class="side-menu bottom">
                 <li>
-                    <a href="#" class="report">
-                        <i class='bx bxs-shield-minus'></i>
-                        <span class="text">Report</span>
-                    </a>
-                </li>
-                <li>
                     <a href="#" class="logout" onclick="openLogoutModal()">
                         <i class='bx bx-log-out'></i>
                         <span class="text">Logout</span>
@@ -52,9 +46,160 @@
             </ul>
     </section>
     <!--END OF SIDEBAR-->
+
+    <!--ROOM VIEW MODAL-->
+    <div id="viewModal" class="modal">
+        <div class="view-modal-content">
+            <span class="close" onclick="closeViewModal()">&times;</span>
+            <div class="room-view-photo">
+                <img class="room-image" src="../uploads/rooms/room3.jpg" alt="Room Photo">
+            </div>
+            <section class="view-modal-details">
+                <h3>Room Overview</h3>
+                <ul>
+                    <li>
+                        <i class='bx bx-layer'></i>
+                        <span class="text">Building A, 1st Floor</span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">50</span>
+                        </i>
+                    </li>
+                </ul>
+                <br>
+                <h3>Room Amenities</h3>
+                <ul>
+                    <li>
+                        <i class='bx bxl-instagram-alt'></i>
+                        <span class="text">Projector</span>
+                        </i>
+                    </li>
+                </ul>
+            </section>
+            <button class="modal-rent-button" onclick="openRentModal(); closeViewModal()">Rent</button>
+        </div>
+    </div>
+    <!--RENT MODAL-->
+    <div id="rentModal" class="modal">
+        <div class="rent-modal-content">
+            <span class="close" onclick="closeRentModal()">&times;</span>
+            <div class="rent-v3-content">
+                <div class="rent-form">
+                    <div class="rent-header">
+                        <h3 class="heading">Rent a Room</h3>
+                        <p>Fill all form field to go next step</p>
+                    </div>
+                    <form class="form-register" action="/auth/user_dashboard" method="POST">
+                        <div id="form-total">
+
+                            <!-- PERSONAL -->
+                            <h2>
+                                <span class="step-icon"><i class='bx bxs-user'></i></span>
+                                <span class="step-text">Personal</span>
+                            </h2>
+                            <section>
+                                <div class="inner">
+                                    <h3>Student Information:</h3>
+                                    <!--First Name-->
+                                    <div class="form-row">
+                                        <div class="form-holder">
+                                            <label class="form-row-inner">
+                                                <input type="text" class="form-control" id="first_name"
+                                                    name="first_name" required>
+                                                <span class="label">First Name*</span>
+                                                <span class="border"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-holder">
+                                            <label class="form-row-inner">
+                                                <input type="text" class="form-control" id="last_name" name="last_name"
+                                                    required>
+                                                <span class="label">Last Name*</span>
+                                                <span class="border"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!--Last Name-->
+                                    <!--School Email Address-->
+                                    <div class="form-row">
+                                        <div class="form-holder form-holder-2">
+                                            <label class="form-row-inner">
+                                                <input type="text" name="email" id="email" class="form-control"
+                                                    required>
+                                                <span class="label">School Email Address*</span>
+                                                <span class="border"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!--School ID-->
+                                    <div class="form-row">
+                                        <div class="form-holder form-holder-2">
+                                            <label class="form-row-inner">
+                                                <input type="number" name="id-number" id="id_num" class="form-control"
+                                                    required>
+                                                <span class="label">SLU ID Number*</span>
+                                                <span class="border"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!--Contact Number-->
+                                    <h4>Contact Information:</h4>
+                                    <div class="form-row">
+                                        <div class="form-holder form-holder-2">
+                                            <label class="form-row-inner">
+                                                <input type="number" name="phone-number" id="phone" class="form-control"
+                                                    required>
+                                                <span class="label">Phone Number*</span>
+                                                <span class="border"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- CONFIRMATION -->
+                            <h2>
+                                <span class="step-icon"><i class='bx bxs-check-circle'></i></span>
+                                <span class="step-text">Confirmation</span>
+                            </h2>
+                            <section>
+                                <div class="inner">
+                                    <h3>Confirm Details:</h3>
+                                    <div class="form-row table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr class="space-row">
+                                                    <th>Full Name:</th>
+                                                    <td id="fullname-val"></td>
+                                                </tr>
+                                                <tr class="space-row">
+                                                    <th>School ID Number:</th>
+                                                    <td id="school-id-val"></td>
+                                                </tr>
+                                                <tr class="space-row">
+                                                    <th>School Email Address:</th>
+                                                    <td id="email-val"></td>
+                                                </tr>
+                                                <tr class="space-row">
+                                                    <th>Phone Number:</th>
+                                                    <td id="phone-val"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                    <button type="submit" class="rent-order-button">Rent</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--LOGOUT MODAL-->
     <div id="logoutModal" class="modal">
-        <div class="modal-content">
+        <div class="logout-modal-content">
             <span class="close" onclick="closeLogoutModal()">&times;</span>
             <p>Are you sure you want to logout?</p>
             <button class="logout-button" onclick="logout()">Logout</button>
@@ -67,7 +212,7 @@
             <a href="#" class="nav-link">Categories</a>
             <form action="#">
                 <div class="form-input">
-                    <input type="search" placeholder="Search for Room or Equipment">
+                    <input type="search" placehlider="Search for Room or Equipment">
                     <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
             </form>
@@ -86,7 +231,7 @@
             <div class="head-title">
                 <div class="left">
                     <h1>Rooms</h1>
-                    <ul class="breadcrumb">
+                    <ul class="dashboard-breadcrumb">
                         <li>
                             <a href="user_dashboard">Home</a>
                         </li>
@@ -100,20 +245,43 @@
             <div class="rooms-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Room Details</h3>
                         <i class='bx bx-search'></i>
                         <i class='bx bx-filter'></i>
                     </div>
                     <div class="room-container">
                         {{#each rooms}}
                         <div class="room-card">
-                            <img src="uploads/rooms/room1.jpg" alt="Room Photo">
-                            <h3>Room Number: {{ room_no }}</h3>
-                            <p>Location: {{ room_location }}</p>
-                            <p>Capacity: {{ room_capacity }}</p>
-                            <p>Status: {{ room_status }}</p>
-                            <p>Created At: {{ created_at }}</p>
-                            <p>Updated At: {{ updated_at }}</p>
+                            <div class="room-photo">
+                                <img class="room-image" src="uploads/rooms/room3.jpg" alt="Room Photo">
+                            </div>
+                            <div class="room-details">
+                                <h4>Room Number: {{ room_no }}</h4>
+                                <span>
+                                    <i class='bx bxs-map-pin'></i>
+                                    Location: {{ room_location }}
+                                </span>
+                                <p>
+                                    <i class='bx bxs-group'></i>
+                                    Capacity: {{ room_capacity }}
+                                </p>
+                                <br>
+                                <p data-date-format="created_at">{{ created_at }}</p>
+                                <p data-date-format="updated_at">{{ updated_at }}</p>
+                            </div>
+                            <section class="room-card-buttons">
+                                <p id="room-status">{{room_status}}</p>
+                                <div class="buttons">
+                                    <button class="view-button" id="viewBtn" type="button"
+                                        onclick="openViewModal()">View</button>
+                                    <button class="rent-button" type="button" onclick="openRentModal()">Rent</button>
+                                </div>
+                                <button class="share-button" type="button">
+                                    <i class='bx bx-share-alt'></i>
+                                </button>
+                                <button class="report-button" type="button">
+                                    <i class='bx bxs-flag-alt'></i>
+                                </button>
+                            </section>
                         </div>
                         {{/each}}
                     </div>

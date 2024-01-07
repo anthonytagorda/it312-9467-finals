@@ -1,7 +1,7 @@
 /* SCRIPTS FOR USER SIDE */
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
-allSideMenu.forEach(item=>{
+allSideMenu.forEach(item => {
     const li = item.parentElement;
 
     item.addEventListener('click', function () {
@@ -20,23 +20,101 @@ menuBar.addEventListener('click', function () {
     sideBar.classList.toggle('hide');
 })
 
-// COUNT NUMBER OF RESERVATIONS
-// Fetch reservation count
-function fetchReservationCount() {
-    fetch('/reservationCount')
-    .then(response => response.json())
-    .then(data => {
-        const count = data.count;
-        document.querySelector('#reservationCount').innerText = count;
-    })
-    .catch(error => console.error('Error fetching reservation count:', error));
+// ROOM STATUS
+document.addEventListener("DOMContentLoaded", function () {
+    function updateColor(element) {
+        if (element.textContent.trim() === "Available") {
+            element.style.backgroundColor = "var(--approve)";
+            element.style.color = "var(--primary)";
+        } else if (element.textContent.trim() === "Unavailable") {
+            element.style.backgroundColor = "var(--error)";
+            element.style.color = "var(--primary)";
+        }
+        element.style.textAlign = "center";
+        element.style.borderRadius = "15px";
+        element.style.height = "30px";
+        element.style.lineHeight = "30px";
+    }
+
+    // Initial update for existing elements
+    var roomStatusElements = document.querySelectorAll("#room-status");
+    roomStatusElements.forEach(function (element) {
+        updateColor(element);
+    });
+
+    // Listen for changes in the subtree of the document
+    document.body.addEventListener("DOMSubtreeModified", function (event) {
+        if (event.target.matches("#room-status")) {
+            updateColor(event.target);
+        }
+    });
+
+});
+
+// DATE FORMAT
+document.addEventListener("DOMContentLoaded", function () {
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const month = monthNames[date.getMonth()];
+        const day = String(date.getDate()).padStart(2, '0');
+        let hours = date.getHours();
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        const amOrPm = hours >= 12 ? 'PM' : 'AM';
+
+        // Convert to 12-hour format
+        hours = hours % 12 || 12;
+
+        return `${month}-${day}-${year} ${hours}:${minutes}:${seconds} ${amOrPm}`;
+    }
+
+    const createdAtElements = document.querySelectorAll('[data-date-format="created_at"]');
+    const updatedAtElements = document.querySelectorAll('[data-date-format="updated_at"]');
+
+    createdAtElements.forEach(element => {
+        element.textContent = `Created at: ${formatDate(element.textContent.trim())}`;
+    });
+
+    updatedAtElements.forEach(element => {
+        element.textContent = `Updated at: ${formatDate(element.textContent.trim())}`;
+    });
+});
+
+// MODAL UI
+var rmModal = document.getElementById("viewModal");
+var rtModal = document.getElementById("rentModal");
+var lgModal = document.getElementById("logoutModal");
+
+window.onclick = function (event) {
+    if (event.target == lgModal) {
+        lgModal.style.display = "none";
+    } else if (event.target == rmModal) {
+        rmModal.style.display = "none"; 
+    } else if (event.target == rtModal) {
+        rtModal.style.display = "none";
+    }
+};
+
+
+// ROOM VIEW MODAL UI
+function openViewModal() {
+    document.getElementById('viewModal').style.display = 'block';
 }
 
-// Call the function initially to set the count
-fetchReservationCount();
+function closeViewModal() {
+    document.getElementById('viewModal').style.display = 'none';
+}
 
-// Optionally, you can set an interval to periodically update the count
-setInterval(fetchReservationCount, 60000);  // Update every 60 seconds 
+// RENT MODAL UI
+function openRentModal() {
+    document.getElementById('rentModal').style.display = 'block';
+}
+
+function closeRentModal() {
+    document.getElementById('rentModal').style.display = 'none';
+}
 
 // LOGOUT MODAL UI
 function openLogoutModal() {
@@ -51,14 +129,39 @@ function logout() {
     window.location.href = "/auth/logout";
 }
 
-// DATE FORMAT
-function formatDate(dateString) {
-    const [datePart, timePart] = dateString.split(' ');
-    const [year, month, day] = datePart.split('-');
-    const [hour, minute, second] = timePart.split(':');
+// Update confirmation details when input values change
+$('#first_name, #last_name, #email, #phone').on('input', function() {
+    updateConfirmationDetails();
+});
 
-    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+function updateConfirmationDetails() {
+    var fullname = $('#first_name').val() + ' ' + $('#last_name').val();
+    var email = $('#email').val();
+    var phone = $('#phone').val();
+
+    $('#fullname-val').text(fullname);
+    $('#email-val').text(email);
+    $('#phone-val').text(phone);
 }
+
+$(function(){
+    $("#form-total").steps({
+        headerTag: "h2",
+        bodyTag: "section",
+        transitionEffect: "fade",
+        enableAllSteps: true,
+        autoFocus: true,
+        transitionEffectSpeed: 500,
+        titleTemplate : '<div class="title">#title#</div>',
+        labels: {
+            previous : 'Previous',
+            next : 'Next Step',
+            finish : 'Submit',
+            current : ''
+        }
+    });
+});
+
 
 // RESPONSIVENESS
 const searchButton = document.querySelector('#content nav form .form-input button');
@@ -68,21 +171,21 @@ searchButton.addEventListener('click', function (e) {
     if (window.innerWidth < 576) {
         e.preventDefault();
         searchForm.classList.toggle('show');
-        if(searchForm.classList.contains('show')) {
+        if (searchForm.classList.contains('show')) {
             searchButtonIcon.classList.replace('bx-search', 'bx-x');
         }
     }
 })
 
-if(window.innerWidth < 768) {
+if (window.innerWidth < 768) {
     sideBar.classList.add('hide');
 } else if (window.innerWidth < 576) {
     searchButtonIcon.classList.replace('bx-x', 'bx-search');
     searchForm.classList.remove('show');
 }
 
-window.addEventListener('resize', function() {
-    if(this.window.innerWidth < 576) {
+window.addEventListener('resize', function () {
+    if (this.window.innerWidth < 576) {
         searchButtonIcon.classList.replace('bx-x', 'bx-search');
         searchForm.classList.remove('show');
     }
