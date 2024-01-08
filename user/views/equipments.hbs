@@ -101,13 +101,15 @@
                     <div class="equipment-container">
                         {{#each equipments}}
                         <div class="equipment-card">
-                            <img src="uploads/equipments/equip1.jpg" alt="Equip Photo">
-                            <h3>Equipment Name: {{ equip_name }}</h3> 
-                            <p>Equipment Number: {{ equip_no }}</p>
+                            <img src="uploads/equipments/{{equip_photo}}.jpg" alt="Equip Photo">
+                            <p id="equip-status">{{equip_status}}</p>
+                            <h3>{{ equip_name }}</h3>
                             <p>Type: {{ equip_type }}</p>
-                            <p>Status: {{ equip_status }}</p>
-                            <p>Created At: {{ created_at }}</p>
-                            <p>Updated At: {{ updated_at }}</p>
+                            <p data-date-format="created_at">{{ created_at }}</p>
+                            <p data-date-format="updated_at">{{ updated_at }}</p>
+                            <div class="buttons">
+                                <button class="rent-button" type="button" onclick="openRentModal()">Rent</button>
+                            </div>
                         </div>
                         {{/each}}
                     </div>
