@@ -6,6 +6,7 @@ const router = express.Router();
 router.post('/user_login', authController.login);
 router.post('/contact_admin', authController.contact_admin);
 router.post('/user_dashboard', authController.login);
+router.post('/rooms', authController.room_order);
 router.get('/rooms', authController.rooms);
 router.get('/equipments', authController.equipments);
 router.get('/logout', authController.logout);

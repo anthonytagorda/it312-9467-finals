@@ -90,7 +90,7 @@
                         <h3 class="heading">Rent a Room</h3>
                         <p>Fill all form field to go next step</p>
                     </div>
-                    <form class="form-register" action="/auth/user_dashboard" method="POST">
+                    <form class="form-register" action="/auth/rooms" method="POST">
                         <div id="form-total">
 
                             <!-- PERSONAL -->
@@ -101,7 +101,18 @@
                             <section>
                                 <div class="inner">
                                     <h3>Student Information:</h3>
-                                    <!--First Name-->
+                                    <!--School ID-->
+                                    <div class="form-row">
+                                        <div class="form-holder form-holder-2">
+                                            <label class="form-row-inner">
+                                                <input type="number" name="id_number" id="id_num" class="form-control"
+                                                    required>
+                                                <span class="label">SLU ID Number*</span>
+                                                <span class="border"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!--Full Name-->
                                     <div class="form-row">
                                         <div class="form-holder">
                                             <label class="form-row-inner">
@@ -120,36 +131,23 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <!--Last Name-->
+                                    <!--Contact Number-->
+                                    <h4>Contact Information:</h4>
                                     <!--School Email Address-->
                                     <div class="form-row">
                                         <div class="form-holder form-holder-2">
                                             <label class="form-row-inner">
-                                                <input type="text" name="email" id="email" class="form-control"
+                                                <input type="text" name="school_email" id="email" class="form-control"
                                                     required>
                                                 <span class="label">School Email Address*</span>
                                                 <span class="border"></span>
                                             </label>
                                         </div>
                                     </div>
-                                    <!--School ID-->
                                     <div class="form-row">
                                         <div class="form-holder form-holder-2">
                                             <label class="form-row-inner">
-                                                <input type="number" name="id-number" id="id_num" class="form-control"
-                                                    required>
-                                                <span class="label">SLU ID Number*</span>
-                                                <span class="border"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!--Contact Number-->
-                                    <h4>Contact Information:</h4>
-                                    <div class="form-row">
-                                        <div class="form-holder form-holder-2">
-                                            <label class="form-row-inner">
-                                                <input type="number" name="phone-number" id="phone" class="form-control"
-                                                    required>
+                                                <input type="number" name="contact_number" id="phone" class="form-control">
                                                 <span class="label">Phone Number*</span>
                                                 <span class="border"></span>
                                             </label>
@@ -212,7 +210,7 @@
             <a href="#" class="nav-link">Categories</a>
             <form action="#">
                 <div class="form-input">
-                    <input type="search" placehlider="Search for Room or Equipment">
+                    <input type="search" placeholder="Search for Room or Equipment">
                     <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
             </form>

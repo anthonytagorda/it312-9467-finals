@@ -5,18 +5,38 @@
     font-family: 'Roboto', sans-serif;
 }
 
+:root {
+    --primary: #FCF7F8;
+    --accent: #F5CB5C;
+    --secondary-black: #242423;
+    --secondary-gray: #333533;
+    --tinge-aqua: #CFDBD5;
+    --tinge-green: #E8EDDF;
+    --error: #FF6058;
+    --approve: #3bb44b;
+    --pending: #ffb000;
+    --shadow: #ECEBEB;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .logo-img {
     max-width: 70%;
     height: auto;
     margin-bottom: 50px;
 }
 
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #ECEBEB;
+    background-color: var(--shadow);
     background-size: cover;
     background-position: center;
 }
@@ -25,7 +45,7 @@ body {
     position: relative;
     width: 500px;
     height: 657px;
-    background-color: #FCF7F8;
+    background-color: var(--primary);
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
@@ -51,7 +71,6 @@ body {
     margin-right: 3px;
 }
 
-
 .input-box {
     position: relative;
     width: 150%;
@@ -66,7 +85,7 @@ body {
     left: 5px;
     transform: translateY(-50%);
     font-size: 1em;
-    color: #242423;
+    color: var(--secondary-black);
     transition: 0.3 ease-out;
     font-weight: 500;
     pointer-events: none;
@@ -76,7 +95,7 @@ body {
     width: 100%;
     height: 100%;
     background: transparent;
-    border: 2px solid #242423;
+    border: 2px solid var(--secondary-black);
     border-radius: 10px;
     padding: 10px;
     font-size: 1em;
@@ -87,13 +106,13 @@ body {
     position: absolute;
     right: 8px;
     font-size: 1.2em;
-    color: #162938;
+    color: var(--secondary-black);
     line-height: 57px;
 }
 
 .forgot {
     font-size: .9em;
-    color: #242423;
+    color: var(--secondary-black);
     font-weight: 500;
     margin: -15px 0 15px;
     display: flex;
@@ -101,7 +120,7 @@ body {
 }
 
 .forgot label input {
-    accent-color: #242424;
+    accent-color: var(--secondary-black);
 }
 
 .forgot a:hover {
@@ -109,7 +128,7 @@ body {
 }
 
 .forgot a {
-    color: #162938;
+    color: var(--secondary-gray);
     text-decoration: none;
 }
 
@@ -117,17 +136,17 @@ body {
     width: 100%;
     height: 45px;
     margin-bottom: 20px;
-    background: #F5CB5C;
+    background: var(--accent);
     outline: #242423;
     border-radius: 20px;
     cursor: pointer;
     font-weight: 700;
-    font-size: 16px;
+
 }
 
 .login-register {
     font-size: .9em;
-    color: #242423;
+    color: var(--secondary-black);
     text-align: center;
     font-weight: 500;
     margin: 25px 0 10px;
@@ -139,10 +158,10 @@ body {
 
 .login-register p a {
     text-decoration: none;
-    color: #162938;
+    color: var(--secondary-black);
     font-weight: 600;
 }
 
 .alert {
-    color: red;
+    color:red;
 }
