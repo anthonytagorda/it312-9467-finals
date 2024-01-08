@@ -51,12 +51,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+// EQUIPMENT STATUS
+document.addEventListener("DOMContentLoaded", function () {
+    function updateColor(element) {
+        if (element.textContent.trim() === "Available") {
+            element.style.backgroundColor = "var(--approve)";
+            element.style.color = "var(--primary)";
+        } else if (element.textContent.trim() === "Unavailable") {
+            element.style.backgroundColor = "var(--error)";
+            element.style.color = "var(--primary)";
+        }
+        element.style.textAlign = "center";
+        element.style.borderRadius = "0 0 10px 10px";
+        element.style.height = "30px";
+        element.style.lineHeight = "30px";
+    }
+
+    // Initial update for existing elements
+    var roomStatusElements = document.querySelectorAll("#equip-status");
+    roomStatusElements.forEach(function (element) {
+        updateColor(element);
+    });
+
+    // Listen for changes in the subtree of the document
+    document.body.addEventListener("DOMSubtreeModified", function (event) {
+        if (event.target.matches("#equip-status")) {
+            updateColor(event.target);
+        }
+    });
+
+});
+
 // DATE FORMAT
 document.addEventListener("DOMContentLoaded", function () {
     function formatDate(dateString) {
         const date = new Date(dateString);
         const year = date.getFullYear();
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const monthNames = ["Jan", "Feb", "Mar", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
         const month = monthNames[date.getMonth()];
         const day = String(date.getDate()).padStart(2, '0');
         let hours = date.getHours();
@@ -67,18 +98,22 @@ document.addEventListener("DOMContentLoaded", function () {
         // Convert to 12-hour format
         hours = hours % 12 || 12;
 
-        return `${month}-${day}-${year} ${hours}:${minutes}:${seconds} ${amOrPm}`;
+        return `${month} ${day} ${year} ${hours}:${minutes}:${seconds} ${amOrPm}`;
     }
 
     const createdAtElements = document.querySelectorAll('[data-date-format="created_at"]');
     const updatedAtElements = document.querySelectorAll('[data-date-format="updated_at"]');
+    const transactAtElements = document.querySelectorAll('[data-date-format="transaction_date"]');
 
     createdAtElements.forEach(element => {
-        element.textContent = `Created at: ${formatDate(element.textContent.trim())}`;
+        element.textContent = `Created: ${formatDate(element.textContent.trim())}`;
     });
 
     updatedAtElements.forEach(element => {
-        element.textContent = `Updated at: ${formatDate(element.textContent.trim())}`;
+        element.textContent = `Updated: ${formatDate(element.textContent.trim())}`;
+    });
+    transactAtElements.forEach(element => {
+        element.textContent = `${formatDate(element.textContent.trim())}`;
     });
 });
 

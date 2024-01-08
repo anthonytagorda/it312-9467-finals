@@ -26,6 +26,12 @@ li {
   --shadow: #ECEBEB;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -626,7 +632,6 @@ body {
 .room-card img {
   margin-top: 20px;
   max-width: 100%;
-  max-height: 100%;
   border-radius: 5px 0 0 5px;
   height: 100%;
   margin: 0 auto;
@@ -667,21 +672,47 @@ body {
 #content main .equipment-data .order {
   flex-grow: 1;
   flex-basis: 500px;
+  height: 500px;
 }
 
 .equipment-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 16px;
+  width: 100%;
 }
 
 .equipment-card {
-  flex: 0 0 calc(50% - 16px);
+  flex: 0 0 calc(25% - 16px);
+  width: calc(25% - 16px);
+  height: auto;
+  min-height: 400px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.equipment-card h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.equipment-card p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.equipment-card .rent-button {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
 }
 
 .equipment-card:hover {
@@ -691,9 +722,11 @@ body {
 .equipment-card img {
   max-width: 100%;
   max-height: 200px;
-  border-radius: 8px 8px 0 0;
-  height: auto;
+  height: 140px;
   display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 10px 10px 0 0;
   margin: 0 auto;
 }
 
@@ -719,7 +752,7 @@ body {
   font-size: 20px;
   cursor: pointer;
   font-size: 24px;
-  color: #aaa; 
+  color: #aaa;
 }
 
 /* RENT MODAL */
@@ -859,31 +892,31 @@ body {
   box-sizing: border-box;
   font-size: 18px;
   color: var(--secondary-black);
-  font-weight: 700;
+  font-weight: 300;
   background-color: var(--primary);
 }
 
 .inner .form-row .form-holder select:focus {
-	border-bottom: none;
+  border-bottom: none;
 }
 
 .inner .form-row .form-holder .form-control:focus,
 .inner .form-row .form-holder .form-control:valid {
-	border-bottom: 2px solid var(--accent);
-	margin-top: 21px;
-  outline: none; 
+  border-bottom: 2px solid var(--accent);
+  margin-top: 21px;
+  outline: none;
   box-shadow: none;
 }
 
-.inner .form-row .form-holder .form-control:focus + .label, 
-.inner .form-row .form-holder .form-control:valid + .label {
-	transform: translateY(-23px) scale(1);
-	color: var(--accent);
+.inner .form-row .form-holder .form-control:focus+.label,
+.inner .form-row .form-holder .form-control:valid+.label {
+  transform: translateY(-23px) scale(1);
+  color: var(--accent);
 }
 
-.inner .form-row  .form-holder .form-control:focus  + .border, 
-.inner .form-row  .form-holder .form-control:valid  + .border {
-	transform: scaleX(1);
+.inner .form-row .form-holder .form-control:focus+.border,
+.inner .form-row .form-holder .form-control:valid+.border {
+  transform: scaleX(1);
 }
 
 /* CONFIRMATION */
@@ -894,35 +927,35 @@ body {
 }
 
 .inner .table-responsive .table {
-	width: 100%;
+  width: 100%;
 }
 
 .inner .table-responsive tbody {
-	text-align: left;
+  text-align: left;
 }
 
 .inner .table-responsive tbody th {
-	color: #666;
-	font-size: 16px;
-	font-weight: 400;
-	width: 30%;
+  color: #666;
+  font-size: 16px;
+  font-weight: 400;
+  width: 30%;
 }
 
 .inner .table-responsive tbody td {
-	color: var(--secondary-gray);
-	font-size: 16px;
-	font-weight: 400;
+  color: var(--secondary-gray);
+  font-size: 16px;
+  font-weight: 400;
 }
 
-.inner .table-responsive tr.space-row > td,
-.inner .table-responsive tr.space-row > th {
-	padding: 17px 20px 14px;
-    border-top: 1px solid var(--tinge-aqua);
+.inner .table-responsive tr.space-row>td,
+.inner .table-responsive tr.space-row>th {
+  padding: 17px 20px 14px;
+  border-top: 1px solid var(--tinge-aqua);
 }
 
-.inner .table-responsive tr.space-row:last-child > td,
-.inner .table-responsive tr.space-row:last-child > th {
-	border-bottom: none;
+.inner .table-responsive tr.space-row:last-child>td,
+.inner .table-responsive tr.space-row:last-child>th {
+  border-bottom: none;
 }
 
 /* LOGOUT MODAL */
@@ -1029,7 +1062,6 @@ body {
   outline: none;
   position: relative;
   margin: 0;
-  position: absolute;
   bottom: 4%;
   right: 3%;
 }

@@ -122,22 +122,21 @@
                                 <th>Transaction Number</th>
                                 <th>User ID</th>
                                 <th>Custodian ID</th>
-                                <th>Room ID</th>
-                                <th>Equipment ID</th>
+                                <th>Resource ID</th>
                                 <th>Transaction Date</th>
                                 <th>Status</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             {{#each transactions}}
                             <tr>
                                 <td>{{ transaction_num }}</td>
-                                <td>{{ user_id }}</td>
+                                <td>{{ id_number }}</td>
                                 <td>{{ custodian_id }}</td>
-                                <td>{{ room_id }}</td>
-                                <td>{{ equip_id }}</td>
-                                <td>{{ transaction_date }}</td>
-                                <td class="status {{ transaction_status }}">{{ transaction_status }}</td>
+                                <td>{{ resource_id }} </td>
+                                <td data-date-format="transaction_date">{{ transaction_date }}</td>
+                                <td class="status {{transaction_status}}">{{ transaction_status }}</td>
                             </tr>
                             {{/each}}
                         </tbody>

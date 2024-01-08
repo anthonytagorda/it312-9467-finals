@@ -113,6 +113,10 @@ exports.rooms = (req, res) => {
     });
 }
 
+exports.room_order = (req, res) => {
+    
+}
+
 exports.equipments = (req, res) => {
     var query = "SELECT * FROM equipments";
 
